@@ -12,6 +12,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.16",
     "tailwind": "latest",
+    "theme-change": "^2.5.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },
