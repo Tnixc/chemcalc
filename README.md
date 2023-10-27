@@ -1,5 +1,5 @@
-# chemcalc
+# Elemental
 
-## Working
+A fast tool for some things chemical related
 
-another tailwind vue ts thingy
+Made with vue3, daisyUI, tailwindcss, some really unsafe typescript as well(I have no ide how to do ts chat gpt wrote it all please help me I am going insane)
