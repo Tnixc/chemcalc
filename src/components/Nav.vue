@@ -20,7 +20,7 @@ function onThemeToggle() {
     .attributes.getNamedItem("data-theme")!.nodeValue;
   console.info(`Changing theme from: ${previousTheme}`);
 
-  theme.value = previousTheme == "dark" ? "emerald" : "dark";
+  theme.value = previousTheme == "dark" ? "light" : "dark";
 }
 </script>
 
@@ -56,11 +56,11 @@ function onThemeToggle() {
       <button
         @click="onThemeToggle()"
         class="btn gap-2 ring-2 shadow-md ring-accent"
-        data-toggle-theme="emerald,dark"
+        data-toggle-theme="light,dark"
         data-act-class="ACTIVECLASS"
       >
         <svg
-          v-if="theme == 'emerald'"
+          v-if="theme == 'light'"
           class="fill-current text-accent flex-1 w-5"
           xmlns="http://www.w3.org/2000/svg"
           width="32"
