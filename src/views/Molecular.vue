@@ -2,15 +2,19 @@
 import Nav from "../components/Nav.vue";
 import MolecularInput from "../components/Molecular/MolecularInput.vue";
 import Render from "../components/Molecular/Render.vue";
+import List from "../components/Molecular/List.vue";
 </script>
 
 <template>
   <main>
     <Nav />
-    <div class="p-8">
-      <h1>Molecular</h1>
-      <MolecularInput @input-enter="updateRenderComponent" />
-      <Render :inputData="renderInputData"/>
+    <div class="p-8 flex gap-8">
+      <div class="w-1/4">
+        <MolecularInput @input-enter="updateRenderComponent" />
+        <Render :inputData="renderInputData"/>
+      </div>
+      <div class="w-1/4"><h1>placeholder</h1></div>
+      <List :inputData="renderInputData" />
     </div>
 
   </main>
@@ -21,6 +25,7 @@ export default {
   components: {
     MolecularInput,
     Render,
+    List,
   },
   data() {
     return {
@@ -28,7 +33,7 @@ export default {
     };
   },
   methods: {
-    updateRenderComponent(data) {
+    updateRenderComponent(data: string) {
       this.renderInputData = data;
     },
   },

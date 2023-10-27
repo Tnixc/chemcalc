@@ -2,7 +2,7 @@
   <label class="label">
     <span class="label-text">Enter an element or compound</span>
   </label>
-  <input v-model="inputData" @keyup.enter="emitData" type="text"  placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+  <input v-model="inputData" @keyup.enter="emitData" type="text"  placeholder="Type here" class="input input-bordered w-full" />
 </template>
 <script lang="ts">
 export default {

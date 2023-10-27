@@ -27,7 +27,7 @@ function onThemeToggle() {
 <template>
   <nav class="p-2 flex justify-between">
     <div class="items-center p-4 left flex gap-3 rounded-xl">
-      <h1 class="text-3xl font-bold">Elemental</h1>
+      <h1 class="text-3xl font-bold px-5">Elemental</h1>
       <router-link
         class="btn shadow-md"
         :class="{ active: $route.path === '/molecular' }"
@@ -56,11 +56,11 @@ function onThemeToggle() {
       <button
         @click="onThemeToggle()"
         class="btn gap-2 ring-2 shadow-md ring-accent"
-        data-toggle-theme="dark,emerald"
+        data-toggle-theme="emerald,dark"
         data-act-class="ACTIVECLASS"
       >
         <svg
-          v-if="theme == 'dark'"
+          v-if="theme == 'emerald'"
           class="fill-current text-accent flex-1 w-5"
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -73,7 +73,7 @@ function onThemeToggle() {
           ></path>
         </svg>
         <svg
-          v-if="theme == 'emerald'"
+          v-if="theme == 'dark'"
           class="fill-current text-accent flex-1 w-5"
           xmlns="http://www.w3.org/2000/svg"
           width="32"
