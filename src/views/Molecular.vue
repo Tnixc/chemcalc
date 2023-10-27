@@ -3,6 +3,7 @@ import Nav from "../components/Nav.vue";
 import MolecularInput from "../components/Molecular/MolecularInput.vue";
 import Render from "../components/Molecular/Render.vue";
 import List from "../components/Molecular/List.vue";
+import MolarMass from "../components/Molecular/MolarMass.vue";
 </script>
 
 <template>
@@ -11,12 +12,11 @@ import List from "../components/Molecular/List.vue";
     <div class="p-8 flex gap-8">
       <div class="w-1/4">
         <MolecularInput @input-enter="updateRenderComponent" />
-        <Render :inputData="renderInputData"/>
+        <Render :inputData="renderInputData" />
       </div>
-      <div class="w-1/4"><h1>placeholder</h1></div>
+      <MolarMass class="w-1/4" />
       <List :inputData="renderInputData" />
     </div>
-
   </main>
 </template>
 
@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      renderInputData: '',
+      renderInputData: "",
     };
   },
   methods: {

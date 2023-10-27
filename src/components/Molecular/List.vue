@@ -55,9 +55,7 @@
           class="modal"
           :open="isModalOpen(index)"
         >
-          <div
-            class="shadow-xl modal-box w-11/12 max-w-5xl h-max bg-base-200"
-          >
+          <div class="shadow-xl modal-box w-11/12 max-w-5xl h-max bg-base-200">
             <h1 class="text-5xl card-title px-4">{{ element.name }}</h1>
             <p class="py-8 px-4">{{ element.summary }}</p>
             <div class="flex justify-center">
@@ -79,7 +77,10 @@
                   Electronegativity (Pauling):
                   {{ element.electronegativity_pauling }}
                 </p>
-                <p>Ionization energies: (kJ/mol<sup>-1</sup>)<br> {{ element.ionization_energies }}</p>
+                <p>
+                  Ionization energies: (kJ/mol<sup>-1</sup>)<br />
+                  {{ element.ionization_energies }}
+                </p>
               </div>
               <div class="flex flex-col w-1/3 p-5 gap-2">
                 <p>Boiling Point: {{ element.boil }}K</p>
@@ -91,9 +92,16 @@
                 <!-- <p>Molar Heat: {{ element.molar_heat }}</p> -->
               </div>
             </div>
-            <p class="py-8 px-4">Source: <a class=" link text-accent" :href="element.source">{{ element.source }}</a></p>
+            <p class="py-8 px-4">
+              Source:
+              <a class="link text-accent" :href="element.source">{{
+                element.source
+              }}</a>
+            </p>
             <form method="dialog" class="modal-backdrop">
-              <button @click="closeModal(index)" class="btn btn-primary">Close</button>
+              <button @click="closeModal(index)" class="btn btn-primary">
+                Close
+              </button>
             </form>
           </div>
         </dialog>

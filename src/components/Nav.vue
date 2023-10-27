@@ -92,10 +92,10 @@ function onThemeToggle() {
 
 <script lang="ts"></script>
 <style scoped>
-svg{
+svg {
   transform: translateY(-2px);
 }
-nav{
+nav {
   position: sticky;
   top: 0;
   left: 0;
