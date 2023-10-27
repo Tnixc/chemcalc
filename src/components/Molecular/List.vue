@@ -1,15 +1,30 @@
 <template>
   <div>
-    <ul class="flex gap-2 flex-col">
-      <li v-for="(element, index) in parsedElements" :key="index">
-        <!-- {{ element.name }} ({{ element.symbol }}) - {{ element.atomic_mass }} -->
-        <div class="flex bg-base-200 p-2">
-          <div class="aspect-square w-full">
-            <h1 class="text-7xl " v-bind:style="'background: hsl(' + Math.floor((element.number / 118)*360) + ', 80%, 80%)'">{{element.symbol}}</h1>
+    <ul class="flex gap-2 flex-col w-full">
+      <li
+        class="rounded-xl flex w-full bg-neutral-content min-w-full"
+        v-for="(element, index) in parsedElements"
+        :key="index"
+      >
+        <div class="p-2 aspect-square">
+          <div
+            class="aspect-square p-1 shadow-md flex justify-center"
+            v-bind:style="
+              'background: hsl(' +
+              Math.floor((element.number / 118) * 360) +
+              ', 80%, 80%)'
+            "
+          >
+            <h1
+              class="p-0 text-7xl font-semibold text-center flex items-center"
+            >
+              {{ element.symbol }}
+            </h1>
           </div>
-          <div>
-            <img :src="element.bohr_model_image" alt="">
-          </div>
+        </div>
+
+        <div>
+          <img class="p-2" :src="element.bohr_model_image" alt="" />
         </div>
       </li>
     </ul>
