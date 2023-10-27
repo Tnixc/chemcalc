@@ -29,10 +29,10 @@
     </div>
     <div class="right flex gap-3">
       <button class="btn" data-set-theme="dark" data-act-class="ACTIVECLASS">
-        dark
+        Dark
       </button>
-      <button class="btn" data-set-theme="light" data-act-class="ACTIVECLASS">
-        light
+      <button class="btn" data-set-theme="emerald" data-act-class="ACTIVECLASS">
+        Light
       </button>
     </div>
   </nav>
