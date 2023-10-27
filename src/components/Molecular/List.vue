@@ -10,41 +10,97 @@
         ', 80%, 80%)'
       "
     >
-      <div class="p-0 aspect-square">
+      <div class="p-0 max-h-20 aspect-square">
         <div
-          class="max-h-20 aspect-square p-1 rounded-xl shadow-md flex justify-center"
+          class="flex rounded-xl flex-col"
           v-bind:style="
             'background: hsl(' +
             Math.floor((element.number / 118) * 360) +
             ', 80%, 80%)'
           "
         >
-          <h1
-            class="p-0 text-3xl font-semibold text-center flex items-center text-slate-800"
-          >
-            {{ element.symbol }}
-          </h1>
+          <div class="max-h-20 aspect-square p-1 flex justify-center">
+            <h1
+              class="p-0 text-3xl font-bold text-center flex items-center text-slate-800"
+            >
+              {{ element.symbol }}
+            </h1>
+          </div>
+          <img
+            class="rounded-xl mt-1 max-h-20"
+            :src="element.bohr_model_image"
+            alt=""
+          />
         </div>
       </div>
       <div class="p-2 flex-grow flex flex-col">
-        <code
-          ><b>{{ element.name }}</b></code
-        >
+        <code class="font-bold text-xl"> {{ element.name }} </code>
         <code>Atomic Number: {{ element.number }}</code>
         <code>Atomic Mass: {{ element.atomic_mass }}</code>
-        <code>Pauling Electronegativity:{{ element.electronegativity_pauling }}</code>
-        <code>Phase: {{element.phase}} </code>
-        <code>
+        <code
+          >Pauling Electronegativity:{{
+            element.electronegativity_pauling
+          }}</code
+        >
+        <code>Phase: {{ element.phase }} </code>
+        <code
+          >Electron Shells:
           <span v-for="(shell, index) in element.shells" :key="index">
             {{ shell }}
             <span v-if="index < element.shells.length - 1"></span>
           </span>
         </code>
-
+        <dialog
+          :id="'my_modal_' + index"
+          class="modal"
+          :open="isModalOpen(index)"
+        >
+          <div
+            class="shadow-xl modal-box w-11/12 max-w-5xl h-max bg-base-200"
+          >
+            <h1 class="text-4xl card-title">{{ element.name }}</h1>
+            <p class="py-8 px-4">{{ element.summary }}</p>
+            <div class="flex justify-center">
+              <div class="flex flex-col w-1/3 p-5 gap-2">
+                <p>Symbol: {{ element.symbol }}</p>
+                <p>Atomic Number: {{ element.number }}</p>
+                <p>Atomic Mass: {{ element.atomic_mass }}</p>
+                <p>Appearance: {{ element.appearance }}</p>
+                <p>Category: {{ element.category }}</p>
+                <p>Named By: {{ element.named_by }}</p>
+              </div>
+              <div class="flex flex-col w-1/3 p-5 gap-2">
+                <p>Shells: {{ element.shells.join(", ") }}</p>
+                <p>
+                  Electron Configuration: {{ element.electron_configuration }}
+                </p>
+                <p>Electron Affinity: {{ element.electron_affinity }}</p>
+                <p>
+                  Electronegativity (Pauling):
+                  {{ element.electronegativity_pauling }}
+                </p>
+                <p>Ionization energies: <br> {{ element.ionization_energies }}</p>
+              </div>
+              <div class="flex flex-col w-1/3 p-5 gap-2">
+                <p>Boiling Point: {{ element.boil }}</p>
+                <p>Melting Point: {{ element.melt }}</p>
+                <p>Density: {{ element.density }}</p>
+                <p>Phase: {{ element.phase }}</p>
+                <p>Period: {{ element.period }}</p>
+                <p>Group: {{ element.group }}</p>
+                <!-- <p>Molar Heat: {{ element.molar_heat }}</p> -->
+              </div>
+            </div>
+            <p class="py-8 px-4">Source: <a class=" link text-accent" :href="element.source">{{ element.source }}</a></p>
+            <form method="dialog" class="modal-backdrop">
+              <button @click="closeModal(index)" class="btn btn-primary">Close</button>
+            </form>
+          </div>
+        </dialog>
       </div>
-      <div>
-        <img class="p-2 max-h-20" :src="element.bohr_model_image" alt="" />
-      </div>
+      <button class="btn btn-ghost text-accent m-1" @click="openModal(index)">
+        More Info
+      </button>
     </li>
   </ul>
 </template>
@@ -66,6 +122,7 @@ export default {
     return {
       elements: [],
       parsedElements: [],
+      openModals: [],
     };
   },
   async created() {
@@ -103,9 +160,25 @@ export default {
 
       this.parsedElements = parsedElements;
     },
+    openModal(index) {
+      // Open the modal by adding the index to the openModals array
+      this.openModals.push(index);
+    },
+    closeModal(index) {
+      // Close the modal by removing the index from the openModals array
+      const modalIndex = this.openModals.indexOf(index);
+      if (modalIndex !== -1) {
+        this.openModals.splice(modalIndex, 1);
+      }
+    },
+    isModalOpen(index) {
+      // Check if the modal with the given index should be open
+      return this.openModals.includes(index);
+    },
   },
 };
 </script>
+
 <style>
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Space+Mono&display=swap");
 h1 {
