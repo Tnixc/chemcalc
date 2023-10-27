@@ -1,34 +1,52 @@
 <template>
-    <ul class="flex gap-2 flex-col w-1/2 flex-grow">
-      <li
+  <ul class="flex gap-5 flex-col w-1/2 flex-grow">
+    <li
       class="rounded-xl flex w-full bg-secondary min-w-full"
       v-for="(element, index) in parsedElements"
-        :key="index"
-      >
-        <div class="p-0 aspect-square">
-          <div
-            class="aspect-square p-1 rounded-xl shadow-md flex justify-center"
-            v-bind:style="
-              'background: hsl(' +
-              Math.floor((element.number / 118) * 360) +
-              ', 80%, 80%)'
-            "
+      :key="index"
+      v-bind:style="
+        'box-shadow: inset 0 0 0 0.25rem hsl(' +
+        Math.floor((element.number / 118) * 360) +
+        ', 80%, 80%)'
+      "
+    >
+      <div class="p-0 aspect-square">
+        <div
+          class="max-h-20 aspect-square p-1 rounded-xl shadow-md flex justify-center"
+          v-bind:style="
+            'background: hsl(' +
+            Math.floor((element.number / 118) * 360) +
+            ', 80%, 80%)'
+          "
+        >
+          <h1
+            class="p-0 text-3xl font-semibold text-center flex items-center text-slate-800"
           >
-            <h1
-              class="p-0 text-3xl font-semibold text-center flex items-center text-slate-800"
-            >
-              {{ element.symbol }}
-            </h1>
-          </div>
+            {{ element.symbol }}
+          </h1>
         </div>
-        <div class="p-2 flex-grow flex flex-col">
-          <code><b>{{element.name}}</b></code>
-        </div>
-        <div>
-          <img class="p-2 max-h-20" :src="element.bohr_model_image" alt="" />
-        </div>
-      </li>
-    </ul>
+      </div>
+      <div class="p-2 flex-grow flex flex-col">
+        <code
+          ><b>{{ element.name }}</b></code
+        >
+        <code>Atomic Number: {{ element.number }}</code>
+        <code>Atomic Mass: {{ element.atomic_mass }}</code>
+        <code>Pauling Electronegativity:{{ element.electronegativity_pauling }}</code>
+        <code>Phase: {{element.phase}} </code>
+        <code>
+          <span v-for="(shell, index) in element.shells" :key="index">
+            {{ shell }}
+            <span v-if="index < element.shells.length - 1"></span>
+          </span>
+        </code>
+
+      </div>
+      <div>
+        <img class="p-2 max-h-20" :src="element.bohr_model_image" alt="" />
+      </div>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -89,7 +107,11 @@ export default {
 };
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Space+Mono&display=swap');h1{
-  font-family: 'Space Mono', monospace;
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Space+Mono&display=swap");
+h1 {
+  font-family: "Space Mono", monospace;
+}
+code {
+  font-family: "Jetbrains Mono", monospace;
 }
 </style>
