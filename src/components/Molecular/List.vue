@@ -1,11 +1,11 @@
 <template>
   <ul class="flex gap-5 flex-col w-1/2 flex-grow">
     <li
-      class="rounded-xl flex w-full bg-secondary min-w-full"
+      class="rounded-xl flex w-full bg-secondary shadow-md min-w-full"
       v-for="(element, index) in parsedElements"
       :key="index"
       v-bind:style="
-        'box-shadow: inset 0 0 0 0.25rem hsl(' +
+        'outline: solid 0.2rem hsl(' +
         Math.floor((element.number / 118) * 360) +
         ', 80%, 80%)'
       "
@@ -58,13 +58,13 @@
           <div
             class="shadow-xl modal-box w-11/12 max-w-5xl h-max bg-base-200"
           >
-            <h1 class="text-4xl card-title">{{ element.name }}</h1>
+            <h1 class="text-5xl card-title px-4">{{ element.name }}</h1>
             <p class="py-8 px-4">{{ element.summary }}</p>
             <div class="flex justify-center">
               <div class="flex flex-col w-1/3 p-5 gap-2">
                 <p>Symbol: {{ element.symbol }}</p>
                 <p>Atomic Number: {{ element.number }}</p>
-                <p>Atomic Mass: {{ element.atomic_mass }}</p>
+                <p>Atomic Mass: {{ element.atomic_mass }}u</p>
                 <p>Appearance: {{ element.appearance }}</p>
                 <p>Category: {{ element.category }}</p>
                 <p>Named By: {{ element.named_by }}</p>
@@ -79,12 +79,12 @@
                   Electronegativity (Pauling):
                   {{ element.electronegativity_pauling }}
                 </p>
-                <p>Ionization energies: <br> {{ element.ionization_energies }}</p>
+                <p>Ionization energies: (kJ/mol<sup>-1</sup>)<br> {{ element.ionization_energies }}</p>
               </div>
               <div class="flex flex-col w-1/3 p-5 gap-2">
-                <p>Boiling Point: {{ element.boil }}</p>
-                <p>Melting Point: {{ element.melt }}</p>
-                <p>Density: {{ element.density }}</p>
+                <p>Boiling Point: {{ element.boil }}K</p>
+                <p>Melting Point: {{ element.melt }}K</p>
+                <p>Density: {{ element.density }}g/cm<sup>3</sup></p>
                 <p>Phase: {{ element.phase }}</p>
                 <p>Period: {{ element.period }}</p>
                 <p>Group: {{ element.group }}</p>
