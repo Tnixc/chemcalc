@@ -6,5 +6,6 @@ import Nav from "../components/Nav.vue";
   <main>
     <Nav />
     <h1>Molecular</h1>
+    
   </main>
 </template>

@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.active{
+.active {
   @apply ring-2 ring-accent;
 }
