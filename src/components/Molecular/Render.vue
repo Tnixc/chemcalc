@@ -1,13 +1,13 @@
 <template>
   <div>
-    <p>Mesasage: {{ message }}</p>
+    <p>Render: {{ inputData }}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    message: String, // Define a prop to receive the string from the parent
+    inputData: String,
   },
 };
 </script>
