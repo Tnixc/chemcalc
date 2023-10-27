@@ -1,7 +1,7 @@
 <template>
   <div class="py-10 ">
     <div class="p-8 ring-2 rounded-xl shadow-xl ring-neutral-focus">
-      <h1 class="text-3xl flex justify-center"><span v-html="chemicalizeString"></span></h1>
+      <h1 class="text-3xl flex justify-center overflow-y-hidden overflow-x-scroll"><span v-html="chemicalizeString"></span></h1>
     </div> 
   </div>
 </template>
