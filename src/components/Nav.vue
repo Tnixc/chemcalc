@@ -25,7 +25,7 @@ function onThemeToggle() {
 </script>
 
 <template>
-  <nav class="p-2 flex justify-between">
+  <nav class="flex justify-between">
     <div class="items-center p-4 left flex gap-3 rounded-xl">
       <h1 class="text-3xl font-bold px-5">Elemental</h1>
       <router-link
@@ -55,13 +55,13 @@ function onThemeToggle() {
     <div class="right flex gap-3 p-4 rounded-xl">
       <button
         @click="onThemeToggle()"
-        class="btn gap-2 ring-2 shadow-md ring-accent"
+        class="btn p-2.5 aspect-square"
         data-toggle-theme="light,dark"
         data-act-class="ACTIVECLASS"
       >
         <svg
           v-if="theme == 'light'"
-          class="fill-current text-accent flex-1 w-5"
+          class="fill-current text-accent aspect-square"
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
@@ -74,7 +74,7 @@ function onThemeToggle() {
         </svg>
         <svg
           v-if="theme == 'dark'"
-          class="fill-current text-accent flex-1 w-5"
+          class="fill-current text-accent aspect-square"
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
@@ -91,3 +91,8 @@ function onThemeToggle() {
 </template>
 
 <script lang="ts"></script>
+<style scoped>
+svg{
+  transform: translateY(-2px);
+}
+</style>
