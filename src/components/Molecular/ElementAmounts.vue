@@ -11,7 +11,7 @@ import {
   evaluateChemicalFormula,
   convertStringsToInt,
   tokenize,
-} from "../../scripts/element.ts";
+} from "../../scripts/element";
 
 export default {
   props: {

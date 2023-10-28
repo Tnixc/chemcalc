@@ -4,8 +4,7 @@
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
-    // "emitDeclarationOnly": false,
-    // "allowImportingTsExtensions": true,
+    // "emitDeclarationOnly": true,
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
