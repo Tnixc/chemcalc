@@ -14,7 +14,7 @@ import MolarMass from "../components/Molecular/MolarMass.vue";
         <MolecularInput @input-enter="updateRenderComponent" />
         <Render :inputData="renderInputData" />
       </div>
-      <MolarMass class="w-1/4" />
+      <MolarMass :inputData="renderInputData" class="w-1/4" />
       <List :inputData="renderInputData" />
     </div>
   </main>
