@@ -22,10 +22,11 @@ export default {
       if (!input) {
         input = "wow such empty";
       }
-      return input
+      let x = input
         .split(/(\d+)/)
         .map((s, i) => (i % 2 ? `<sub>${s}</sub>` : s))
         .join("");
+      return x;
     },
   },
 };
