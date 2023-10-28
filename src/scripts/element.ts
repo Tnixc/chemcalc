@@ -33,7 +33,9 @@ export function convertStringsToInt(arr: string[]): (string | number)[] {
 export function evaluateChemicalFormula(tokens: (string | number)[]): { [key: string]: number } {
   const elementCounts: { [key: string]: number } = {};
   const stack: number[] = [1];
-
+  if (typeof tokens[0] === 'number') {
+    return elementCounts;
+  }
   let i = 0;
   while (i < tokens.length) {
     const token = tokens[i];
@@ -79,3 +81,7 @@ export function evaluateChemicalFormula(tokens: (string | number)[]): { [key: st
   }
   return elementCounts;
 }
+console.log(splitAtomicSymbols('2'));
+console.log(tokenize('2'));
+console.log(convertStringsToInt(tokenize('2')));
+console.log(evaluateChemicalFormula(convertStringsToInt(tokenize('2'))))
