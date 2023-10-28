@@ -96,13 +96,8 @@
 </template>
 
 <script>
-function splitAtomicSymbols(input) {
-  const atomicSymbolsWithNumbers = input.match(/[A-Z][a-z]*\d*/g) || [];
-  const atomicSymbolsWithoutNumbers = atomicSymbolsWithNumbers.map((token) =>
-    token.replace(/\d/g, "")
-  );
-  return atomicSymbolsWithoutNumbers;
-}
+import { splitAtomicSymbols } from "../../scripts/element.ts";
+
 
 export default {
   props: {
@@ -119,7 +114,7 @@ export default {
     // Fetch element data from a remote JSON file URL
     const response = await fetch(
       "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json"
-    ); // Replace with your remote URL
+    ); 
     const data = await response.json();
     this.elements = data.elements;
 
@@ -141,7 +136,6 @@ export default {
         for (const token of sanitizedTokens) {
           if (element.symbol === token) {
             if (!parsedElements.some((e) => e.symbol === token)) {
-              // Check if the token is not already in parsedElements
               parsedElements.push(element);
             }
           }
