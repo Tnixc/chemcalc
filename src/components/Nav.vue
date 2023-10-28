@@ -25,9 +25,9 @@ function onThemeToggle() {
 </script>
 
 <template>
-  <nav class="flex justify-between glass rounded-xl">
-    <div class="items-center p-4 left flex gap-3 rounded-xl">
-      <h1 class="text-3xl font-bold px-5">Elemental</h1>
+  <nav class="flex items-center justify-left flex-wrap glass rounded-xl">
+    <h1 class="text-3xl font-bold px-5">Elemental</h1>
+    <div class="items-center p-4 flex-wrap left flex gap-3 rounded-xl flex-grow">
       <router-link
         class="btn shadow-md"
         :class="{ active: $route.path === '/molecular' }"
@@ -51,11 +51,10 @@ function onThemeToggle() {
       >
         Balance
       </router-link>
-    </div>
-    <div class="right flex gap-3 p-4 rounded-xl">
+      <!-- <div class="right flex gap-3 p-4 rounded-xl"> -->
       <button
         @click="onThemeToggle()"
-        class="btn p-2.5 aspect-square shadow-xl ring-2 ring-accent"
+        class="btn p-2.5 aspect-square shadow-xl ring-2 ring-accent theme-toggle"
         data-toggle-theme="light,dark"
         data-act-class="ACTIVECLASS"
       >
@@ -86,6 +85,7 @@ function onThemeToggle() {
           ></path>
         </svg>
       </button>
+    <!-- </div> -->
     </div>
   </nav>
 </template>
@@ -100,5 +100,9 @@ nav {
   top: 0;
   left: 0;
   z-index: 9;
+}
+.theme-toggle{
+  margin-left: auto;
+  margin-right: 0;
 }
 </style>

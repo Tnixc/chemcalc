@@ -9,8 +9,8 @@ import ElementAmounts from "../components/Molecular/ElementAmounts.vue";
 <template>
   <main>
     <Nav />
-    <div class="p-8 flex gap-8">
-      <div class="w-1/2">
+    <div class="p-8 flex gap-8 flex-wrap">
+      <div class="flex-grow min-w">
         <MolecularInput @input-enter="updateRenderComponent" />
         <Render :inputData="renderInputData" />
         <ElementAmounts :inputData="renderInputData"/>
