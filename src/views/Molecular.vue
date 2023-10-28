@@ -13,7 +13,7 @@ import ElementAmounts from "../components/Molecular/ElementAmounts.vue";
       <div class="flex-grow min-w">
         <MolecularInput @input-enter="updateRenderComponent" />
         <Render :inputData="renderInputData" />
-        <ElementAmounts :inputData="renderInputData"/>
+        <ElementAmounts :inputData="renderInputData" />
       </div>
       <List :inputData="renderInputData" />
     </div>
@@ -26,7 +26,7 @@ export default {
     MolecularInput,
     Render,
     List,
-    ElementAmounts
+    ElementAmounts,
   },
   data() {
     return {

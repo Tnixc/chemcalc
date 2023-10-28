@@ -7,7 +7,11 @@
 </template>
 
 <script lang="ts">
-import { evaluateChemicalFormula, convertStringsToInt, tokenize } from "../../scripts/element.ts";
+import {
+  evaluateChemicalFormula,
+  convertStringsToInt,
+  tokenize,
+} from "../../scripts/element.ts";
 
 export default {
   props: {
@@ -15,14 +19,14 @@ export default {
   },
   computed: {
     chemicalizeString() {
-
       let input: string = this.inputData!;
-      let counts = evaluateChemicalFormula(convertStringsToInt(tokenize(input)));
-
+      let counts = evaluateChemicalFormula(
+        convertStringsToInt(tokenize(input))
+      );
       return counts;
     },
-  }
-}
+  },
+};
 </script>
 <style scoped>
 * {
