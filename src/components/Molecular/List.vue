@@ -1,7 +1,7 @@
 <template>
   <ul class="flex gap-5 flex-col w-1/2 flex-grow">
     <li
-      class="rounded-xl flex w-full bg-secondary shadow-md min-w-full"
+      class="rounded-xl flex w-full bg-secondary shadow-md min-w-full relative"
       v-for="(element, index) in parsedElements"
       :key="index"
       v-bind:style="
@@ -106,7 +106,7 @@
           </div>
         </dialog>
       </div>
-      <button class="btn btn-ghost text-accent m-1" @click="openModal(index)">
+      <button class="btn btn-ghost text-accent m-1 absolute top-1 right-1" @click="openModal(index)">
         More Info
       </button>
     </li>

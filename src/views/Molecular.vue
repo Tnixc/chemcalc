@@ -10,11 +10,11 @@ import MolarMass from "../components/Molecular/MolarMass.vue";
   <main>
     <Nav />
     <div class="p-8 flex gap-8">
-      <div class="w-1/4">
+      <div class="w-1/2">
         <MolecularInput @input-enter="updateRenderComponent" />
         <Render :inputData="renderInputData" />
+        <MolarMass :inputData="renderInputData"/>
       </div>
-      <MolarMass :inputData="renderInputData" class="w-1/4" />
       <List :inputData="renderInputData" />
     </div>
   </main>

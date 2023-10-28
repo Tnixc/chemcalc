@@ -8,3 +8,6 @@
 .glass{
   @apply bg-gradient-to-r from-base-200 to-accent/10
 }
+::selection{
+  @apply bg-accent/50;
+}
