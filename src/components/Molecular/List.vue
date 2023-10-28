@@ -38,7 +38,7 @@
         <code>Atomic Number: {{ element.number }}</code>
         <code>Atomic Mass: {{ element.atomic_mass }}</code>
         <code
-          >Pauling Electronegativity:{{
+          >Pauling Electronegativity: {{
             element.electronegativity_pauling
           }}</code
         >
@@ -53,9 +53,9 @@
         <dialog
           :id="'my_modal_' + index"
           class="modal"
-          :open="isModalOpen(index)"
-        >
-          <div class="shadow-xl modal-box w-11/12 max-w-5xl h-max bg-base-200">
+          :open="isModalOpen(index)">
+          <div class="shadow-xl modal-box w-11/12 max-w-5xl h-max bg-base-200" :style="'background-image: url(' + element.image.url + ')'" >
+            <div class="p-4 rounded-xl">
             <h1 class="text-5xl card-title px-4">{{ element.name }}</h1>
             <p class="py-8 px-4">{{ element.summary }}</p>
             <div class="flex justify-center">
@@ -103,7 +103,7 @@
                 Close
               </button>
             </form>
-          </div>
+          </div></div>
         </dialog>
       </div>
       <button class="btn btn-ghost text-accent m-1 absolute top-1 right-1" @click="openModal(index)">
@@ -145,7 +145,7 @@ export default {
     this.parseInput(this.inputData);
   },
   watch: {
-    inputData(newValue, oldValue) {
+    inputData(newValue) {
       this.parseInput(newValue);
     },
   },
@@ -194,5 +194,15 @@ h1 {
 }
 code {
   font-family: "Jetbrains Mono", monospace;
+}
+.modal-box{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow:0 0 0 100vw rgba(0, 0, 0, 0.664);
+}
+.modal-box > div {
+  @apply bg-base-200/80 rounded-xl shadow-xl;
+  backdrop-filter: blur(50px);
 }
 </style>

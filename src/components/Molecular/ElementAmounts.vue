@@ -1,9 +1,8 @@
 <template>
-  <div class="py-10">
-    <h1>Hellko</h1>
-    <li v-for="(count, element) in chemicalizeString" :key="element">
-        {{ element }}: {{ count }}
-      </li>
+  <div class="">
+    <p v-for="(count, element) in chemicalizeString" :key="element">
+      {{ element }}: {{ count }}
+    </p>
   </div>
 </template>
 
@@ -90,11 +89,16 @@ export default {
         }
         return elementCounts;
       }
-      let input:string = this.inputData!;
+      let input: string = this.inputData!;
       let final = evaluateChemicalFormula(convertStringsToInt(tokenize(input)));
       return final;
-    }
+    },
   }
 }
 </script>
-<style scoped></style>
+<style scoped>
+* {
+  font-family: "IBM Plex Serif", serif;
+  font-size: 2rem;
+}
+</style>

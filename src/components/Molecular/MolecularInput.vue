@@ -10,6 +10,7 @@
     class="input input-bordered w-full"
   />
 </template>
+
 <script lang="ts">
 export default {
   data() {
