@@ -12,7 +12,7 @@ import {
   convertStringsToInt,
   tokenize,
   filterValidElements,
-  validElementSymbols
+  validElementSymbols,
 } from "../../scripts/element";
 
 export default {
@@ -23,11 +23,10 @@ export default {
   computed: {
     chemicalizeString() {
       let input: string = this.inputData!;
-      // let tokens = tokenize(input);
-      // let filtered = await filterInvalidElements(tokens);
-      // let arr = convertStringsToInt(filtered);
-      // let counts = evaluateChemicalFormula(arr);
-      let counts = filterValidElements(evaluateElementCounts(convertStringsToInt(tokenize(input))), validElementSymbols);
+      let counts = filterValidElements(
+        evaluateElementCounts(convertStringsToInt(tokenize(input))),
+        validElementSymbols
+      );
       return counts;
     },
   },
