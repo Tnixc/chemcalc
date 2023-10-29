@@ -5,6 +5,22 @@ export function splitAtomicSymbols(input: string) {
   );
   return atomicSymbolsWithoutNumbers;
 }
+export async function getElementData() {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json"
+  );
+  const data = await response.json();
+  const elementSymbols = data.elements.map((element: any) => element.symbol);
+  return elementSymbols;
+}
+
+export async function filterInvalidElements(tokens: (string)[]){
+  const elementSymbolsPromise = getElementData();
+  const elementSymbols = await elementSymbolsPromise;
+  let filtered = tokens.filter((token) => elementSymbols.includes(token));
+  return filtered;
+}
+
 export function tokenize(inputStr: string): string[] {
   const regex = /[A-Z][a-z]*\d*|\d+|\(|\)/g;
   const tokens = inputStr.match(regex) || [];
@@ -81,7 +97,3 @@ export function evaluateChemicalFormula(tokens: (string | number)[]): { [key: st
   }
   return elementCounts;
 }
-console.log(splitAtomicSymbols('2'));
-console.log(tokenize('2'));
-console.log(convertStringsToInt(tokenize('2')));
-console.log(evaluateChemicalFormula(convertStringsToInt(tokenize('2'))))

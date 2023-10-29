@@ -6,7 +6,7 @@
       :key="index"
       v-bind:style="
         'outline: solid 0.2rem hsl(' +
-        Math.floor((element.number / 118) * 360) +
+        Math.floor((element.number / 118 * 4) * 360) +
         ', 80%, 80%)'
       "
     >
@@ -15,7 +15,7 @@
           class="flex rounded-xl flex-col"
           v-bind:style="
             'background: hsl(' +
-            Math.floor((element.number / 118) * 360) +
+            Math.floor((element.number / 118 * 4) * 360) +
             ', 80%, 80%)'
           "
         >
@@ -169,14 +169,12 @@ export default {
     };
   },
   async created() {
-    // Fetch element data from a remote JSON file URL
     const response = await fetch(
       "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json"
     );
     const data = await response.json();
     this.elements = data.elements;
 
-    // Start parsing the input
     this.parseInput(this.inputData);
   },
   watch: {
