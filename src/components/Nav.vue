@@ -55,7 +55,7 @@ function onThemeToggle() {
       </router-link>
       <div class="tooltip tooltip-bottom" data-tip="Source on GitHub">
         <a
-          href="https://github.com/Tnixc/chemcalc"
+          href="https://github.com/Tnixc/elemental"
           target="_blank"
           class="btn btn-ghost p-2.5 aspect-square shadow-xl ring-2 ring-secondary"
           ><svg
