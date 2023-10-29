@@ -11,7 +11,8 @@ import {
   evaluateElementCounts,
   convertStringsToInt,
   tokenize,
-  // filterInvalidElements,
+  filterValidElements,
+  validElementSymbols
 } from "../../scripts/element";
 
 export default {
@@ -26,9 +27,7 @@ export default {
       // let filtered = await filterInvalidElements(tokens);
       // let arr = convertStringsToInt(filtered);
       // let counts = evaluateChemicalFormula(arr);
-      let counts = evaluateElementCounts(
-        convertStringsToInt(tokenize(input))
-      );
+      let counts = filterValidElements(evaluateElementCounts(convertStringsToInt(tokenize(input))), validElementSymbols);
       return counts;
     },
   },

@@ -1,3 +1,5 @@
+import fetch from 'sync-fetch';
+
 export function splitAtomicSymbols(input: string) {
   const atomicSymbolsWithNumbers = input.match(/[A-Z][a-z]*\d*/g) || [];
   const atomicSymbolsWithoutNumbers = atomicSymbolsWithNumbers.map((token) =>
@@ -5,11 +7,11 @@ export function splitAtomicSymbols(input: string) {
   );
   return atomicSymbolsWithoutNumbers;
 }
-export async function getElementSymbols() {
-  const response = await fetch(
+export function getElementSymbols() {
+  const response = fetch(
     "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json"
   );
-  const data = await response.json();
+  const data = response.json();
   const elementSymbols = data.elements.map((element: any) => element.symbol);
   return elementSymbols;
 }
@@ -101,4 +103,4 @@ export function evaluateElementCounts(tokens: (string | number)[]): { [key: stri
   return elementCounts;
 }
 
-export const validElementSymbols = await getElementSymbols();
+export const validElementSymbols = getElementSymbols();

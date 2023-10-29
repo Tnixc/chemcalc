@@ -6,7 +6,7 @@
       :key="index"
       v-bind:style="
         'outline: solid 0.2rem hsl(' +
-        Math.floor((element.number / 118 * 4) * 360) +
+        Math.floor((element.number / 118) * 4 * 360) +
         ', 80%, 80%)'
       "
     >
@@ -15,7 +15,7 @@
           class="flex rounded-xl flex-col"
           v-bind:style="
             'background: hsl(' +
-            Math.floor((element.number / 118 * 4) * 360) +
+            Math.floor((element.number / 118) * 4 * 360) +
             ', 80%, 80%)'
           "
         >
