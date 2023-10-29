@@ -8,19 +8,25 @@
 
 <script lang="ts">
 import {
-  evaluateChemicalFormula,
+  evaluateElementCounts,
   convertStringsToInt,
   tokenize,
+  // filterInvalidElements,
 } from "../../scripts/element";
 
 export default {
   props: {
     inputData: String,
   },
+
   computed: {
     chemicalizeString() {
       let input: string = this.inputData!;
-      let counts = evaluateChemicalFormula(
+      // let tokens = tokenize(input);
+      // let filtered = await filterInvalidElements(tokens);
+      // let arr = convertStringsToInt(filtered);
+      // let counts = evaluateChemicalFormula(arr);
+      let counts = evaluateElementCounts(
         convertStringsToInt(tokenize(input))
       );
       return counts;

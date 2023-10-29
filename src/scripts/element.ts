@@ -5,7 +5,7 @@ export function splitAtomicSymbols(input: string) {
   );
   return atomicSymbolsWithoutNumbers;
 }
-export async function getElementData() {
+export async function getElementSymbols() {
   const response = await fetch(
     "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json"
   );
@@ -14,11 +14,14 @@ export async function getElementData() {
   return elementSymbols;
 }
 
-export async function filterInvalidElements(tokens: (string)[]){
-  const elementSymbolsPromise = getElementData();
-  const elementSymbols = await elementSymbolsPromise;
-  let filtered = tokens.filter((token) => elementSymbols.includes(token));
-  return filtered;
+export function filterValidElements(obj: { [key: string]: number }, keysArray: string[]): { [key: string]: number } {
+  const result: { [key: string]: number } = {};
+  for (const key of keysArray) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] = obj[key];
+    }
+  }
+  return result;
 }
 
 export function tokenize(inputStr: string): string[] {
@@ -46,7 +49,7 @@ export function convertStringsToInt(arr: string[]): (string | number)[] {
   return result;
 }
 
-export function evaluateChemicalFormula(tokens: (string | number)[]): { [key: string]: number } {
+export function evaluateElementCounts(tokens: (string | number)[]): { [key: string]: number } {
   const elementCounts: { [key: string]: number } = {};
   const stack: number[] = [1];
   if (typeof tokens[0] === 'number') {
@@ -79,7 +82,7 @@ export function evaluateChemicalFormula(tokens: (string | number)[]): { [key: st
         currentMultiplier = tokens[i] as number;
         i += 1;
       }
-      const subElementCounts = evaluateChemicalFormula(subFormula);
+      const subElementCounts = evaluateElementCounts(subFormula);
       for (const [element, count] of Object.entries(subElementCounts)) {
         elementCounts[element] = (elementCounts[element] || 0) + count * currentMultiplier * stack[stack.length - 1];
       }
@@ -97,3 +100,5 @@ export function evaluateChemicalFormula(tokens: (string | number)[]): { [key: st
   }
   return elementCounts;
 }
+
+export const validElementSymbols = await getElementSymbols();
