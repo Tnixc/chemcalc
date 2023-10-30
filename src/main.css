@@ -5,7 +5,8 @@
 .active {
   @apply ring-2 ring-accent;
 }
-.glass {
+
+.glass-gradient {
   @apply bg-gradient-to-r from-base-200 to-accent/10;
 }
 ::selection {
