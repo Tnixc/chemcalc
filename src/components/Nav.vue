@@ -25,7 +25,7 @@ function onThemeToggle() {
 </script>
 
 <template>
-  <nav class="flex items-center justify-left flex-wrap glass-gradient rounded-xl shadow-xl w-max">
+  <nav class="flex items-center justify-left flex-wrap glass-gradient rounded-xl shadow-xl w-max max-w-full">
     <h1 class="text-3xl font-bold px-5">Elemental</h1>
     <div
       class="items-center p-4 flex-wrap left flex gap-3 rounded-xl flex-grow"
