@@ -13,8 +13,7 @@
 
 # Todo
 
-- [ ] Refractor `list.vue` to use scripts in `element.ts`
-- [ ] Refractor some Js to Ts to remove allowJs
 - [ ] Calculate molar mass section
 - [ ] Emperical formulae part
 - [ ] Balancing formulae
+- [x] Refractor some Js to Ts to remove allowJs
