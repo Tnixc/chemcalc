@@ -155,7 +155,7 @@
 </template>
 
 <script lang="ts">
-import { splitAtomicSymbols } from "../../scripts/element";
+import { removeNumbers } from "../../scripts/element";
 
 export default {
   props: {
@@ -184,7 +184,7 @@ export default {
   },
   methods: {
     parseInput(input: string) {
-      const sanitizedTokens = splitAtomicSymbols(input);
+      const sanitizedTokens = removeNumbers(input);
 
       const parsedElements: any[] = [];
       // const symbol: any = [];
