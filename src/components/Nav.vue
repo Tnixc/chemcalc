@@ -25,7 +25,7 @@ function onThemeToggle() {
 </script>
 
 <template>
-  <nav class="flex items-center justify-left flex-wrap glass rounded-xl">
+  <nav class="flex items-center justify-left flex-wrap glass-gradient rounded-xl shadow-xl">
     <h1 class="text-3xl font-bold px-5">Elemental</h1>
     <div
       class="items-center p-4 flex-wrap left flex gap-3 rounded-xl flex-grow"
@@ -57,7 +57,7 @@ function onThemeToggle() {
         <a
           href="https://github.com/Tnixc/elemental"
           target="_blank"
-          class="btn btn-ghost p-2.5 aspect-square shadow-xl ring-2 ring-secondary"
+          class="btn p-0 aspect-square shadow-xl ring-2 ring-base-100"
           ><svg
             class="fill-current text-accent aspect-square"
             xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ function onThemeToggle() {
       <div class="tooltip tooltip-bottom" data-tip="Theme">
         <button
           @click="onThemeToggle()"
-          class="btn p-2.5 aspect-square shadow-xl ring-2 ring-accent theme-toggle"
+          class="btn p-0 aspect-square shadow-xl ring-2 ring-accent theme-toggle"
           data-toggle-theme="light,dark"
           data-act-class="ACTIVECLASS"
         >
@@ -112,9 +112,7 @@ function onThemeToggle() {
 
 <script lang="ts"></script>
 <style scoped>
-svg {
-  transform: translateY(-2px);
-}
+
 nav {
   position: sticky;
   top: 0;
@@ -123,6 +121,6 @@ nav {
 }
 div[data-tip="Source on GitHub"] {
   margin-left: auto;
-  margin-right: 1rem;
+  margin-right: 0;
 }
 </style>
