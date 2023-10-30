@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <p v-for="(count, element) in chemicalizeString" :key="element">
+    <p v-for="(count, element) in amounts" :key="element">
       {{ element }}: {{ count }}
     </p>
   </div>
@@ -19,14 +19,10 @@ export default {
   props: {
     inputData: String,
   },
-
   computed: {
-    chemicalizeString() {
+    amounts() {
       let input: string = this.inputData!;
-      let counts = filterValidElements(
-        evaluateElementCounts(convertStringsToInt(tokenize(input))),
-        validElementSymbols
-      );
+      let counts = filterValidElements(evaluateElementCounts(convertStringsToInt(tokenize(input))),validElementSymbols);
       return counts;
     },
   },

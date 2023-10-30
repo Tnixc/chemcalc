@@ -63,7 +63,7 @@ function onThemeToggle() {
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
-            fill="#000000"
+            fill="#629DA2"
             viewBox="0 0 256 256"
           >
             <path
@@ -84,7 +84,7 @@ function onThemeToggle() {
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
-            fill="white"
+            fill="#5C989D"
             viewBox="0 0 256 256"
           >
             <path

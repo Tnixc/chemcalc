@@ -154,18 +154,18 @@
   </ul>
 </template>
 
-<script>
-import { splitAtomicSymbols } from "../../scripts/element.ts";
+<script lang="ts">
+import { splitAtomicSymbols } from "../../scripts/element";
 
 export default {
   props: {
-    inputData: String,
+    inputData: String as any, // Use PropType to specify the prop type
   },
   data() {
     return {
-      elements: [],
-      parsedElements: [],
-      openModals: [],
+      elements: [] as any[], // Specify the type as an array of any
+      parsedElements: [] as any[], // Specify the type as an array of any
+      openModals: [] as number[], // Specify the type as an array of numbers
     };
   },
   async created() {
@@ -174,23 +174,23 @@ export default {
     );
     const data = await response.json();
     this.elements = data.elements;
-
     this.parseInput(this.inputData);
   },
   watch: {
-    inputData(newValue) {
+    inputData(newValue: string) {
+      // Specify the type of newValue as string
       this.parseInput(newValue);
     },
   },
   methods: {
-    parseInput(input) {
+    parseInput(input: string) {
       const sanitizedTokens = splitAtomicSymbols(input);
 
-      const parsedElements = [];
-
+      const parsedElements: any[] = [];
+      // const symbol: any = [];
       for (const element of this.elements) {
         for (const token of sanitizedTokens) {
-          if (element.symbol === token) {
+          if (element["symbol"] === token) {
             if (!parsedElements.some((e) => e.symbol === token)) {
               parsedElements.push(element);
             }
@@ -200,19 +200,20 @@ export default {
 
       this.parsedElements = parsedElements;
     },
-    openModal(index) {
+    openModal(index: number) {
+      // Specify the type of index as number
       // Open the modal by adding the index to the openModals array
       this.openModals.push(index);
     },
-    closeModal(index) {
-      // Close the modal by removing the index from the openModals array
+    closeModal(index: number) {
+      // Specify the type of index as number
       const modalIndex = this.openModals.indexOf(index);
       if (modalIndex !== -1) {
         this.openModals.splice(modalIndex, 1);
       }
     },
-    isModalOpen(index) {
-      // Check if the modal with the given index should be open
+    isModalOpen(index: number) {
+      // Specify the type of index as number
       return this.openModals.includes(index);
     },
   },
