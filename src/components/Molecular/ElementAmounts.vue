@@ -31,6 +31,6 @@ export default {
 <style scoped>
 * {
   font-family: "IBM Plex Serif", serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 </style>
