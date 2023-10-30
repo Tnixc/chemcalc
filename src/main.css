@@ -8,6 +8,7 @@
 
 .glass-gradient {
   @apply bg-gradient-to-r from-base-200 to-accent/10;
+  backdrop-filter: blur(10px);
 }
 ::selection {
   @apply bg-accent/50;

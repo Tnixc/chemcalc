@@ -10,7 +10,7 @@ import ElementAmounts from "../components/Molecular/ElementAmounts.vue";
   <main>
     <Nav />
     <div class="p-8 flex gap-8 flex-wrap">
-      <div class="flex-grow min-w">
+      <div class="flex-grow min-30">
         <MolecularInput @input-enter="updateRenderComponent" />
         <Render :inputData="renderInputData" />
         <ElementAmounts :inputData="renderInputData" />
@@ -40,3 +40,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.min-30{
+  min-width: 30rem;
+}
+</style>

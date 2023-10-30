@@ -1,5 +1,5 @@
 <template>
-  <ul class="flex gap-5 flex-col w-1/2 flex-grow">
+  <ul class="flex gap-5 flex-col w-1/2 flex-grow ">
     <li
       class="rounded-xl flex w-full bg-secondary shadow-md min-w-full relative"
       v-for="(element, index) in parsedElements"
