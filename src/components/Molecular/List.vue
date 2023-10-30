@@ -187,7 +187,6 @@ export default {
       const sanitizedTokens = removeNumbers(input);
 
       const parsedElements: any[] = [];
-      // const symbol: any = [];
       for (const element of this.elements) {
         for (const token of sanitizedTokens) {
           if (element["symbol"] === token) {

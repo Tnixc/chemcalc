@@ -1,8 +1,10 @@
 <template>
-  <div class="">
-    <p v-for="(count, element) in amounts" :key="element">
-      {{ element }}: {{ count }}
-    </p>
+  <div>
+    <ul>
+      <li v-for="(symbolData, symbol) in amounts" :key="symbol">
+        <p>{{ symbol }} - {{ symbolData[0] }}: {{ symbolData[1] }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -13,6 +15,8 @@ import {
   tokenize,
   filterValidElements,
   validElementSymbols,
+  getElementNameFromSymbol,
+  elementDataObject
 } from "../../scripts/element";
 
 export default {
@@ -23,7 +27,9 @@ export default {
     amounts() {
       let input: string = this.inputData!;
       let counts = filterValidElements(evaluateElementCounts(convertStringsToInt(tokenize(input))),validElementSymbols);
-      return counts;
+      let namesAndcounts = getElementNameFromSymbol(counts, elementDataObject);
+      console.log(namesAndcounts);
+      return namesAndcounts;
     },
   },
 };

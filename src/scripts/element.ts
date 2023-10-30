@@ -111,5 +111,31 @@ export function evaluateElementCounts(tokens: (string | number)[]): {
   }
   return elementCounts;
 }
+export function getElementNameFromSymbol(inputObject: { [key: string]: number }, obj2: { elements: any[] }): { [key: string]: any } {
+  const resultObject: { [key: string]: any } = { ...inputObject };
 
+  function searchElement(elements: any[], symbol: string) {
+    for (const element of elements) {
+      if (element.symbol === symbol) {
+        return {
+          name: element.name,
+          count: resultObject[symbol] || 0
+        };
+      }
+    }
+    return null;
+  }
+
+  for (const symbol of Object.keys(resultObject)) {
+    const validElementsObject = searchElement(obj2.elements, symbol);
+
+    if (validElementsObject) {
+      const { name, count } = validElementsObject;
+      resultObject[symbol] = [name, count];
+    }
+  }
+
+  return resultObject;
+}
+export const elementDataObject = getElementData();
 export const validElementSymbols = processSymbols(getElementData());

@@ -18,6 +18,7 @@ export default {
       inputData: "",
     };
   },
+  emits: ["input-enter"],
   methods: {
     emitData() {
       this.$emit("input-enter", this.inputData);
