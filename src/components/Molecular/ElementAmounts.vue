@@ -2,13 +2,15 @@
   <div>
     <ul class="bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral">
       <li class="flex h-10 items-center">
-        <span class=""></span
-        ><strong class="px-1 underline flex-grow text-3xl">Element</strong
-        ><strong class="px-1 text-primary underline">Count</strong>
+        <!-- <span class=""></span> -->
+        <strong class="px-1 underline flex-grow text-3xl">Element</strong>
+        <strong class="px-1 text-primary underline">Molar Mass</strong>
+        <strong class="px-1 text-primary underline">Count</strong>
       </li>
-      <li class="flex" v-for="(symbolData, symbol) in amounts" :key="symbol">
+      <li class="flex flex-wrap" v-for="(symbolData, symbol) in amounts" :key="symbol">
         <span class="w-full block text-right px-1">{{ symbol }}</span>
         <span class="px-1 flex-grow">{{ symbolData[0] }}</span>
+        <span class="pr-5">{{ symbolData[2] }}</span>
         <span class="px-1 text-primary">{{ symbolData[1] }}</span>
       </li>
     </ul>

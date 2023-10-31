@@ -220,6 +220,9 @@ export default {
 </script>
 
 <style>
+code{
+  font-family: 'Jetbrains Mono', monospace;
+}
 .modal-box {
   background-size: cover;
   background-repeat: no-repeat;

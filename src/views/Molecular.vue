@@ -41,7 +41,14 @@ export default {
 };
 </script>
 <style scoped>
-.min-30{
+@media screen and (min-width: 1000px) {
+  .min-30{
   min-width: 30rem;
+}
+}
+@media screen and (max-width: 1000px) {
+  .min-30{
+  max-width: 100%;
+}
 }
 </style>

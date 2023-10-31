@@ -111,7 +111,7 @@ export function evaluateElementCounts(tokens: (string | number)[]): {
   }
   return elementCounts;
 }
-export function getElementNameFromSymbol(inputObject: { [key: string]: number }, obj2: { elements: any[] }): { [key: string]: any } {
+export function getElementNameFromSymbol(inputObject: { [key: string]: number }, validData: { elements: any[] }): { [key: string]: any } {
   const resultObject: { [key: string]: any } = { ...inputObject };
 
   function searchElement(elements: any[], symbol: string) {
@@ -119,6 +119,7 @@ export function getElementNameFromSymbol(inputObject: { [key: string]: number },
       if (element.symbol === symbol) {
         return {
           name: element.name,
+          atomicMass: element.atomic_mass,
           count: resultObject[symbol] || 0
         };
       }
@@ -127,11 +128,11 @@ export function getElementNameFromSymbol(inputObject: { [key: string]: number },
   }
 
   for (const symbol of Object.keys(resultObject)) {
-    const validElementsObject = searchElement(obj2.elements, symbol);
+    const validElementsObject = searchElement(validData.elements, symbol);
 
     if (validElementsObject) {
-      const { name, count } = validElementsObject;
-      resultObject[symbol] = [name, count];
+      const { name, count, atomicMass } = validElementsObject;
+      resultObject[symbol] = [name, count, atomicMass];
     }
   }
 
