@@ -25,11 +25,11 @@ function onThemeToggle() {
 </script>
 
 <template>
-  <nav class="flex items-center justify-left flex-wrap glass-gradient rounded-xl shadow-xl max-w-full  p-4">
+  <nav
+    class="flex items-center justify-left flex-wrap glass-gradient rounded-xl shadow-xl max-w-full p-4"
+  >
     <h1 class="text-3xl font-bold pr-4 logo">Elemental</h1>
-    <div
-      class="items-center flex-wrap left flex gap-3 rounded-xl flex-grow"
-    >
+    <div class="items-center flex-wrap left flex gap-3 rounded-xl flex-grow">
       <router-link
         class="btn shadow-md"
         :class="{ active: $route.path === '/molecular' }"
@@ -112,7 +112,7 @@ function onThemeToggle() {
 
 <script lang="ts"></script>
 <style scoped>
-h1{
+h1 {
   font-family: "IBM Plex Serif", serif;
 }
 

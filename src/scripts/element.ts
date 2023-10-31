@@ -7,12 +7,14 @@ export function getElementData() {
   const data = response.json();
   return data;
 }
-export function processSymbols(data: any) {
+function processSymbols(data: any) {
   const elementSymbols = data.elements.map((element: any) => element.symbol);
   return elementSymbols;
 }
+
 export const elementDataObject = getElementData();
 export const validElementSymbols = processSymbols(getElementData());
+
 export function removeNumbers(input: string) {
   const atomicSymbolsWithNumbers = input.match(/[A-Z][a-z]*\d*/g) || [];
   const atomicSymbolsWithoutNumbers = atomicSymbolsWithNumbers.map((token) =>
@@ -20,8 +22,12 @@ export function removeNumbers(input: string) {
   );
   return atomicSymbolsWithoutNumbers;
 }
-function removeNumbersFollowingNumber(arr: (string | number)[]) {
+function removeLowercaseStrings(arr: (string | number)[]): (string| number)[] {
+  return arr.filter(item => typeof item !== 'number' && item !== (item as string).toLowerCase());
+}
+function filter(x: (string | number)[]) {
   let i = 0;
+  let arr = removeLowercaseStrings(x);
   while (i < arr.length - 1) {
     if (typeof arr[i] === "number") {
       while (typeof arr[i + 1] === "number") {
@@ -78,7 +84,7 @@ export function evaluateElementCounts(x: (string | number)[]): {
 } {
   const elementCounts: { [key: string]: number } = {};
   let y = filterArrayIntersection(x, validElementSymbols);
-  let tokens = removeNumbersFollowingNumber(y);
+  let tokens = filter(y);
   const stack: number[] = [1];
   if (typeof tokens[0] === "number") {
     return elementCounts;

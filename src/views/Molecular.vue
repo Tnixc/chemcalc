@@ -16,7 +16,7 @@ import ElementMakeup from "../components/Molecular/ElementMakeup.vue";
         <MolecularInput @input-enter="updateRenderComponent" />
         <Render :inputData="renderInputData" />
         <ElementMakeup :inputData="renderInputData" />
-        <MolarMass :inputData="renderInputData"/>
+        <MolarMass :inputData="renderInputData" />
         <ElementAmounts :inputData="renderInputData" />
       </div>
       <List :inputData="renderInputData" />
@@ -32,7 +32,7 @@ export default {
     List,
     ElementAmounts,
     MolarMass,
-    ElementMakeup
+    ElementMakeup,
   },
   data() {
     return {
@@ -48,13 +48,13 @@ export default {
 </script>
 <style scoped>
 @media screen and (min-width: 1000px) {
-  .min-30{
-  min-width: 30rem;
-}
+  .min-30 {
+    min-width: 30rem;
+  }
 }
 @media screen and (max-width: 1000px) {
-  .min-30{
-  max-width: 100%;
-}
+  .min-30 {
+    max-width: 100%;
+  }
 }
 </style>

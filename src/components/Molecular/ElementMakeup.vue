@@ -39,8 +39,7 @@ export default {
   computed: {
     makeup() {
       let input: string = this.inputData!;
-      let counts = 
-        evaluateElementCounts(convertStringsToInt(tokenize(input)));
+      let counts = evaluateElementCounts(convertStringsToInt(tokenize(input)));
       let namesAndcounts = getElementNameFromSymbol(counts, elementDataObject);
       let total = getElementMakeup(namesAndcounts);
       return total;
