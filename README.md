@@ -14,7 +14,7 @@
 # Todo
 
 - [ ] Fix infinite looping when something like `N3fe999999` is entered
-- [ ] Calculate molar mass section
 - [ ] Emperical formulae part
 - [ ] Balancing formulae
+- [x] Calculate molar mass section
 - [x] Refractor some Js to Ts to remove allowJs
