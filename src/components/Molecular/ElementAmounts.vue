@@ -10,8 +10,8 @@
       <li class="flex flex-wrap" v-for="(symbolData, symbol) in amounts" :key="symbol">
         <span class="w-full block text-right px-1">{{ symbol }}</span>
         <span class="px-1 flex-grow">{{ symbolData[0] }}</span>
-        <span class="pr-5">{{ symbolData[2] }}</span>
-        <span class="px-1 text-primary">{{ symbolData[1] }}</span>
+        <span class="pr-10">{{ symbolData[2] }}</span>
+        <span class="px-1 text-primary w-10 text-right">{{ symbolData[1] }}</span>
       </li>
     </ul>
   </div>
@@ -40,7 +40,7 @@ export default {
         validElementSymbols
       );
       let namesAndcounts = getElementNameFromSymbol(counts, elementDataObject);
-      console.log(namesAndcounts);
+      // console.log(namesAndcounts);
       return namesAndcounts;
     },
   },

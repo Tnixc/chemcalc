@@ -1,6 +1,8 @@
 <template>
-  <div class="py-10">
-    <div class="p-8 ring-2 rounded-xl shadow-xl ring-neutral-focus bg-base-200 bg-opacity-60">
+  <div class="pt-10 pb-5">
+    <div
+      class="p-8 ring-2 rounded-xl shadow-xl ring-neutral-focus bg-base-200 bg-opacity-60"
+    >
       <h1 class="text-3xl flex justify-center overflow-x-scroll py-2">
         <span v-html="chemicalizeString"></span>
       </h1>

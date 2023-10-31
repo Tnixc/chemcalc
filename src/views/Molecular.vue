@@ -4,6 +4,7 @@ import MolecularInput from "../components/Molecular/MolecularInput.vue";
 import Render from "../components/Molecular/Render.vue";
 import List from "../components/Molecular/List.vue";
 import ElementAmounts from "../components/Molecular/ElementAmounts.vue";
+import MolarMass from "../components/Molecular/MolarMass.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import ElementAmounts from "../components/Molecular/ElementAmounts.vue";
       <div class="flex-grow min-30">
         <MolecularInput @input-enter="updateRenderComponent" />
         <Render :inputData="renderInputData" />
+        <MolarMass :inputData="renderInputData"/>
         <ElementAmounts :inputData="renderInputData" />
       </div>
       <List :inputData="renderInputData" />
@@ -27,6 +29,7 @@ export default {
     Render,
     List,
     ElementAmounts,
+    MolarMass,
   },
   data() {
     return {

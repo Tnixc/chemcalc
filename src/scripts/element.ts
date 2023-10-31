@@ -138,5 +138,17 @@ export function getElementNameFromSymbol(inputObject: { [key: string]: number },
 
   return resultObject;
 }
+export function getTotalMolarMass(inputObject: { [key: string]: [string, number, number] }): number {
+  let totalSum = 0;
+
+  for (const key in inputObject) {
+    if (inputObject.hasOwnProperty(key)) {
+      const [_, firstNumber, secondNumber] = inputObject[key];
+      totalSum += firstNumber * secondNumber;
+    }
+  }
+
+  return totalSum;
+}
 export const elementDataObject = getElementData();
 export const validElementSymbols = processSymbols(getElementData());
