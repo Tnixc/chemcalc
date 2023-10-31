@@ -152,7 +152,7 @@ export function getElementMakeup(inputObject: { [key: string]: [string, number, 
   const result: { [key: string]: number } = {};
   for (const key in inputObject) {
     const [_, firstNumber, secondNumber] = inputObject[key];
-    const value = Math.floor(((firstNumber * secondNumber) / total) * 100);
+    const value = Math.round(((firstNumber * secondNumber) / total) * 100 * 100)/100;
     result[key] = value;
   }
   return result;
