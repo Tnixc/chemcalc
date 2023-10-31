@@ -27,8 +27,6 @@ import {
   evaluateElementCounts,
   convertStringsToInt,
   tokenize,
-  filterValidElements,
-  validElementSymbols,
   getElementNameFromSymbol,
   elementDataObject,
   getElementMakeup,
@@ -41,10 +39,8 @@ export default {
   computed: {
     makeup() {
       let input: string = this.inputData!;
-      let counts = filterValidElements(
-        evaluateElementCounts(convertStringsToInt(tokenize(input))),
-        validElementSymbols
-      );
+      let counts = 
+        evaluateElementCounts(convertStringsToInt(tokenize(input)));
       let namesAndcounts = getElementNameFromSymbol(counts, elementDataObject);
       let total = getElementMakeup(namesAndcounts);
       return total;

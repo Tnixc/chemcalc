@@ -1,12 +1,5 @@
 import fetch from "sync-fetch";
 
-export function removeNumbers(input: string) {
-  const atomicSymbolsWithNumbers = input.match(/[A-Z][a-z]*\d*/g) || [];
-  const atomicSymbolsWithoutNumbers = atomicSymbolsWithNumbers.map((token) =>
-    token.replace(/\d/g, "")
-  );
-  return atomicSymbolsWithoutNumbers;
-}
 export function getElementData() {
   const response = fetch(
     "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json"
@@ -18,19 +11,43 @@ export function processSymbols(data: any) {
   const elementSymbols = data.elements.map((element: any) => element.symbol);
   return elementSymbols;
 }
-export function filterValidElements(
-  obj: { [key: string]: number }, // this would be the element counts object
-  keysArray: string[] // Array with valid element symbols
-): { [key: string]: number } {
-  const result: { [key: string]: number } = {};
-  for (const key of keysArray) {
-    if (obj.hasOwnProperty(key)) {
-      result[key] = obj[key];
+export const elementDataObject = getElementData();
+export const validElementSymbols = processSymbols(getElementData());
+export function removeNumbers(input: string) {
+  const atomicSymbolsWithNumbers = input.match(/[A-Z][a-z]*\d*/g) || [];
+  const atomicSymbolsWithoutNumbers = atomicSymbolsWithNumbers.map((token) =>
+    token.replace(/\d/g, "")
+  );
+  return atomicSymbolsWithoutNumbers;
+}
+function removeNumbersFollowingNumber(arr: (string | number)[]) {
+  let i = 0;
+  while (i < arr.length - 1) {
+    if (typeof arr[i] === "number") {
+      while (typeof arr[i + 1] === "number") {
+        arr.splice(i + 1, 1);
+      }
+    }
+    i++;
+  }
+  return arr;
+}
+
+function filterArrayIntersection(
+  arr1: (string | number)[],
+  arr2: string[]
+): (string | number)[] {
+  const result: (string | number)[] = [];
+
+  for (const item of arr1) {
+    if (typeof item === "string" && arr2.includes(item)) {
+      result.push(item);
+    } else if (typeof item === "number") {
+      result.push(item);
     }
   }
   return result;
 }
-
 export function tokenize(inputStr: string): string[] {
   const regex = /[A-Z][a-z]*\d*|\d+|\(|\)/g;
   const tokens = inputStr.match(regex) || [];
@@ -56,8 +73,12 @@ export function convertStringsToInt(arr: string[]): (string | number)[] {
   return result;
 }
 
-export function evaluateElementCounts(tokens: (string | number)[]): { [key: string]: number; } {
+export function evaluateElementCounts(x: (string | number)[]): {
+  [key: string]: number;
+} {
   const elementCounts: { [key: string]: number } = {};
+  let y = filterArrayIntersection(x, validElementSymbols);
+  let tokens = removeNumbersFollowingNumber(y);
   const stack: number[] = [1];
   if (typeof tokens[0] === "number") {
     return elementCounts;
@@ -109,7 +130,10 @@ export function evaluateElementCounts(tokens: (string | number)[]): { [key: stri
   }
   return elementCounts;
 }
-export function getElementNameFromSymbol(inputObject: { [key: string]: number }, validData: { elements: any[] }): { [key: string]: any } {
+export function getElementNameFromSymbol(
+  inputObject: { [key: string]: number },
+  validData: { elements: any[] }
+): { [key: string]: any } {
   const resultObject: { [key: string]: any } = { ...inputObject };
 
   function searchElement(elements: any[], symbol: string) {
@@ -118,7 +142,7 @@ export function getElementNameFromSymbol(inputObject: { [key: string]: number },
         return {
           name: element.name,
           atomicMass: element.atomic_mass,
-          count: resultObject[symbol] || 0
+          count: resultObject[symbol] || 0,
         };
       }
     }
@@ -136,7 +160,9 @@ export function getElementNameFromSymbol(inputObject: { [key: string]: number },
 
   return resultObject;
 }
-export function getTotalMolarMass(inputObject: { [key: string]: [string, number, number] }): number {
+export function getTotalMolarMass(inputObject: {
+  [key: string]: [string, number, number];
+}): number {
   let totalSum = 0;
 
   for (const key in inputObject) {
@@ -147,15 +173,16 @@ export function getTotalMolarMass(inputObject: { [key: string]: [string, number,
   }
   return totalSum;
 }
-export function getElementMakeup(inputObject: { [key: string]: [string, number, number] }): { [key: string]: number } {
+export function getElementMakeup(inputObject: {
+  [key: string]: [string, number, number];
+}): { [key: string]: number } {
   let total = getTotalMolarMass(inputObject);
   const result: { [key: string]: number } = {};
   for (const key in inputObject) {
     const [_, firstNumber, secondNumber] = inputObject[key];
-    const value = Math.round(((firstNumber * secondNumber) / total) * 100 * 100)/100;
+    const value =
+      Math.round(((firstNumber * secondNumber) / total) * 100 * 100) / 100;
     result[key] = value;
   }
   return result;
 }
-export const elementDataObject = getElementData();
-export const validElementSymbols = processSymbols(getElementData());
