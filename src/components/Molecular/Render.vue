@@ -30,7 +30,6 @@ export default {
 };
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300&display=swap");
 h1 {
   font-family: "IBM Plex Serif", serif;
 }

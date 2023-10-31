@@ -220,22 +220,11 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Space+Mono&display=swap");
-
-h1 {
-  font-family: "Space Mono", monospace;
-}
-
-code {
-  font-family: "Jetbrains Mono", monospace;
-  @apply bg-secondary;
-}
-
 .modal-box {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.664);
+  box-shadow: 0 0 0 1000vw rgba(0, 0, 0, 0.664);
 }
 
 .modal-box > div {
