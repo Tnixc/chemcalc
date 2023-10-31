@@ -1,17 +1,17 @@
 <template>
   <div>
-    <ul class="bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral">
+    <ul class="bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral shadow-lg">
       <li class="flex h-10 items-center">
         <!-- <span class=""></span> -->
         <strong class="px-1 underline flex-grow text-3xl">Element</strong>
-        <strong class="px-1 text-primary underline">Molar Mass</strong>
-        <strong class="px-1 text-primary underline">Count</strong>
+        <strong class="px-1 text-accent underline">Molar Mass</strong>
+        <strong class="px-1 text-accent underline">Count</strong>
       </li>
       <li class="flex flex-wrap" v-for="(symbolData, symbol) in amounts" :key="symbol">
         <span class="w-full block text-right px-1">{{ symbol }}</span>
         <span class="px-1 flex-grow">{{ symbolData[0] }}</span>
         <span class="pr-10">{{ symbolData[2] }}</span>
-        <span class="px-1 text-primary w-10 text-right">{{ symbolData[1] }}</span>
+        <span class="px-1 text-accent w-10 text-right">{{ symbolData[1] }}</span>
       </li>
     </ul>
   </div>

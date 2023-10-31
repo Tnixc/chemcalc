@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral mb-5" >
+  <div class="bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral mb-5 shadow-lg" >
     <p v-html="total" class="inline pr-2 text-2xl"></p><span>g/mol</span>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <ul class="flex gap-5 flex-col w-1/2 flex-grow ">
     <li
-      class="rounded-xl flex w-full bg-secondary shadow-md min-w-full relative"
+      class="rounded-xl flex w-full bg-base-100/80 shadow-md min-w-full relative"
       v-for="(element, index) in parsedElements"
       :key="index"
       v-bind:style="
@@ -136,7 +136,7 @@
                 }}</a>
               </p>
               <form method="dialog" class="modal-backdrop">
-                <button @click="closeModal(index)" class="btn btn-primary">
+                <button @click="closeModal(index)" class="btn btn-accent">
                   Close
                 </button>
               </form>
