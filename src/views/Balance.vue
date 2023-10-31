@@ -15,5 +15,3 @@ import Nav from "../components/Nav.vue";
     </div>
   </main>
 </template>
-
-<script lang="ts"></script>

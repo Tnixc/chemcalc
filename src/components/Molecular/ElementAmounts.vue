@@ -11,7 +11,7 @@
         <span class="w-full block text-right px-1">{{ symbol }}</span>
         <span class="px-1 flex-grow">{{ symbolData[0] }}</span>
         <span class="pr-10">{{ symbolData[2] }}</span>
-        <span class="px-1 text-accent w-10 text-right">{{ symbolData[1] }}</span>
+        <span class="px-1 text-neutral-content w-10 text-right">{{ symbolData[1] }}</span>
       </li>
     </ul>
   </div>

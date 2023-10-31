@@ -56,9 +56,7 @@ export function convertStringsToInt(arr: string[]): (string | number)[] {
   return result;
 }
 
-export function evaluateElementCounts(tokens: (string | number)[]): {
-  [key: string]: number;
-} {
+export function evaluateElementCounts(tokens: (string | number)[]): { [key: string]: number; } {
   const elementCounts: { [key: string]: number } = {};
   const stack: number[] = [1];
   if (typeof tokens[0] === "number") {
@@ -147,8 +145,17 @@ export function getTotalMolarMass(inputObject: { [key: string]: [string, number,
       totalSum += firstNumber * secondNumber;
     }
   }
-
   return totalSum;
+}
+export function getElementMakeup(inputObject: { [key: string]: [string, number, number] }): { [key: string]: number } {
+  let total = getTotalMolarMass(inputObject);
+  const result: { [key: string]: number } = {};
+  for (const key in inputObject) {
+    const [_, firstNumber, secondNumber] = inputObject[key];
+    const value = Math.floor(((firstNumber * secondNumber) / total) * 100);
+    result[key] = value;
+  }
+  return result;
 }
 export const elementDataObject = getElementData();
 export const validElementSymbols = processSymbols(getElementData());
