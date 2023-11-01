@@ -13,8 +13,3 @@
 
 - [ ] Emperical formulae part
 - [ ] Balancing formulae
-- [ ] Fix spelling(I literally do not care)
-- [x] Fix infinite looping when something like `N3fe999999` is entered
-- [x] **FIX COUNTS**
-- [x] Calculate molar mass section
-- [x] Refractor some Js to Ts to remove allowJs
