@@ -10,9 +10,11 @@
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
 # Todo
-- [ ] **FIX COUNTS**
-- [ ] Fix infinite looping when something like `N3fe999999` is entered
+
 - [ ] Emperical formulae part
 - [ ] Balancing formulae
+- [ ] Fix spelling(I literally do not care)
+- [x] Fix infinite looping when something like `N3fe999999` is entered
+- [x] **FIX COUNTS**
 - [x] Calculate molar mass section
 - [x] Refractor some Js to Ts to remove allowJs
