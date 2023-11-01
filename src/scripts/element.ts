@@ -22,21 +22,26 @@ export function removeNumbers(input: string) {
   );
   return atomicSymbolsWithoutNumbers;
 }
-function removeLowercaseStrings(arr: (string | number)[]): (string| number)[] {
-  return arr.filter(item => typeof item !== 'number' && item !== (item as string).toLowerCase());
-}
-function filter(x: (string | number)[]) {
-  let i = 0;
-  let arr = removeLowercaseStrings(x);
-  while (i < arr.length - 1) {
-    if (typeof arr[i] === "number") {
-      while (typeof arr[i + 1] === "number") {
-        arr.splice(i + 1, 1);
+// function removeLowercaseStrings(arr: (string | number)[]): (string| number)[] {
+//   return arr.filter(item => typeof item !== 'number' && item !== (item as string).toLowerCase());
+// }
+function filter(arr: (string | number)[]): (string | number)[] {
+  const result: (string | number)[] = [];
+  let consecutiveNumbers = 0;
+
+  for (const item of arr) {
+    if (typeof item === "number") {
+      consecutiveNumbers++;
+      if (consecutiveNumbers <= 2) {
+        result.push(item);
       }
+    } else {
+      consecutiveNumbers = 0;
+      result.push(item);
     }
-    i++;
   }
-  return arr;
+
+  return result;
 }
 
 function filterArrayIntersection(
@@ -83,8 +88,8 @@ export function evaluateElementCounts(x: (string | number)[]): {
   [key: string]: number;
 } {
   const elementCounts: { [key: string]: number } = {};
-  let y = filterArrayIntersection(x, validElementSymbols);
-  let tokens = filter(y);
+  let tokens = filter(filterArrayIntersection(x, validElementSymbols));
+  // let tokens = filter(y);
   const stack: number[] = [1];
   if (typeof tokens[0] === "number") {
     return elementCounts;
