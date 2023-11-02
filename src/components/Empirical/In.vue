@@ -1,13 +1,15 @@
+<script setup lang="ts">
+import MassIn from "../Empirical/MassIn.vue";
+</script>
 <template>
   <main class="p-4 flex flex-wrap">
     <div class="min-w-fit">
-      <div class="bg-amber-500/20 ring-2 ring-amber-400 mb-4 p-4 rounded-xl">
-        Error rate: ±0.05
-      </div>
-      <label class="label">
-        <span class="label-text">Molar Mass (g/mol):</span></label
+      <code
+        class="block bg-amber-500/20 ring-2 ring-amber-400 mb-4 p-4 rounded-xl"
       >
-      <input class="w-full max-w-none input input-bordered" type="text" />
+        Error rate: ±0.05
+      </code>
+      <MassIn @m="x" />
       <ul class="flex flex-col gap-1">
         <li class="flex flex-wrap">
           <p class="w-1/2 px-3">Element</p>
@@ -30,10 +32,10 @@
           />
         </li>
       </ul>
-      <div class="flex gap-1">
+      <div class="flex gap-3">
         <button
           @click="addRow"
-          class="btn flex-grow mt-2 ring-2 ring-accent ring-inset"
+          class="btn bg-base-200/50 flex-grow mt-2 ring-2 ring-accent"
         >
           Add Row<svg
             class="aspect-square scale-75"
@@ -50,7 +52,7 @@
         </button>
         <button
           @click="removeRow"
-          class="btn hover:bg-red-400/40 mt-2 ring-2 ring-accent ring-inset aspect-square"
+          class="btn bg-base-200/50 hover:bg-red-400/40 mt-2 ring-2 ring-accent aspect-square"
         >
           <svg
             class="scale-150"
@@ -66,7 +68,7 @@
           </svg>
         </button>
       </div>
-      <button @click="sendDataToParent" class="btn btn-accent mt-2 w-full">
+      <button @click="send" class="btn btn-accent mt-2 w-full">
         Calculate
       </button>
     </div>
@@ -75,11 +77,15 @@
 
 <script lang="ts">
 export default {
+  components: {
+    MassIn,
+  },
   data() {
     return {
       data: [
         { element: "", percentage: "" }, // Initial row
       ],
+      // x: "",
     };
   },
   methods: {
@@ -91,9 +97,12 @@ export default {
         this.data.pop();
       }
     },
-    sendDataToParent() {
-      // Emit a custom event to send the data to the parent component
+    send() {
       this.$emit("calculate", this.data);
+    },
+    x(data: any) {
+      // this.enter = data;
+      console.log(data);
     },
   },
 };
