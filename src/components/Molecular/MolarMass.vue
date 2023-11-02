@@ -13,7 +13,7 @@ import {
   getElementNameFromSymbol,
   elementDataObject,
   getTotalMolarMass,
-} from "../../scripts/element";
+} from "../../scripts/molecular";
 
 export default {
   props: {
@@ -35,3 +35,4 @@ p {
   font-family: "Jetbrains Mono", monospace;
 }
 </style>
+../../scripts/molecular

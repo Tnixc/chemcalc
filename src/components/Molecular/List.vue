@@ -155,7 +155,7 @@
 </template>
 
 <script lang="ts">
-import { removeNumbers } from "../../scripts/element";
+import { removeNumbers } from "../../scripts/molecular";
 
 export default {
   props: {
@@ -235,3 +235,4 @@ code {
   backdrop-filter: blur(50px);
 }
 </style>
+../../scripts/molecular
