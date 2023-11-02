@@ -159,13 +159,13 @@ import { removeNumbers } from "../../scripts/molecular";
 
 export default {
   props: {
-    inputData: String as any, // Use PropType to specify the prop type
+    inputData: String as any, 
   },
   data() {
     return {
-      elements: [] as any[], // Specify the type as an array of any
-      parsedElements: [] as any[], // Specify the type as an array of any
-      openModals: [] as number[], // Specify the type as an array of numbers
+      elements: [] as any[], 
+      parsedElements: [] as any[], 
+      openModals: [] as number[], 
     };
   },
   async created() {
