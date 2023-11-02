@@ -30,7 +30,7 @@ import {
   tokenize,
   getElementNameFromSymbol,
   elementDataObject,
-} from "../../scripts/element";
+} from "../../scripts/molecular";
 
 export default {
   props: {
@@ -62,3 +62,4 @@ li > span:nth-child(1) {
   opacity: 1;
 }
 </style>
+../../scripts/molecular

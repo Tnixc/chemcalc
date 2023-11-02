@@ -30,7 +30,7 @@ import {
   getElementNameFromSymbol,
   elementDataObject,
   getElementMakeup,
-} from "../../scripts/element";
+} from "../../scripts/molecular";
 
 export default {
   props: {
@@ -98,3 +98,4 @@ p {
   background: var(--color);
 }
 </style>
+../../scripts/molecular
