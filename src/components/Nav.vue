@@ -26,9 +26,9 @@ function onThemeToggle() {
 
 <template>
   <nav
-    class="flex items-center justify-left flex-wrap glass-gradient rounded-xl shadow-xl max-w-full p-4"
+    class="flex items-center justify-left flex-wrap glass-gradient rounded-xl shadow-xl max-w-full p-4 top-0 left-0 z-10 sticky"
   >
-    <h1 class="text-3xl font-bold pr-4 logo">Elemental</h1>
+    <h1 class="text-3xl font-bold px-4 pr-8 logo">Elemental</h1>
     <div class="items-center flex-wrap left flex gap-3 rounded-xl flex-grow">
       <router-link
         class="btn shadow-md"
@@ -53,6 +53,10 @@ function onThemeToggle() {
       >
         Balance
       </router-link>
+      <div class="mr-0 ml-auto flex flex-col">
+        <div><span class="text-xs">Latest commit: </span><span v-html="sha" class="text-xs"></span></div>
+        <span v-html="d" class="text-right text-xs opacity-50"></span>
+      </div>
       <div class="tooltip tooltip-bottom" data-tip="Source on GitHub">
         <a
           href="https://github.com/Tnixc/elemental"
@@ -110,20 +114,51 @@ function onThemeToggle() {
   </nav>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+export default {
+  data() {
+    return {
+      sha: null, // Initialize sha with a default value or null
+      d: null,
+    };
+  },
+  mounted() {
+    async function update(this: any) {
+      // Add 'this: any' to enable accessing 'this' inside the function
+      const data = await fetch(
+        "https://api.github.com/repos/Tnixc/elemental/branches/main"
+      );
+      const json = await data.json();
+      const x = json.commit.sha;
+      this.sha = x.slice(0, 7);
+    }
+    function convertDate(timestamp: string): string {
+      const date = new Date(timestamp);
+
+      const day = date.getUTCDate().toString().padStart(2, "0");
+      const month = (date.getUTCMonth() + 1).toString().padStart(2, "0"); // Months are 0-based, so we add 1.
+      const year = date.getUTCFullYear();
+
+      return `${day}/${month}/${year}`;
+    }
+
+    update.call(this);
+    async function d(this: any) {
+      // Add 'this: any' to enable accessing 'this' inside the function
+      const data = await fetch(
+        "https://api.github.com/repos/Tnixc/elemental/branches/main"
+      );
+      const json = await data.json();
+      const x = json.commit.commit.author.date;
+      this.d = convertDate(x);
+    }
+    d.call(this);
+  },
+};
+</script>
+
 <style scoped>
 h1 {
   font-family: "IBM Plex Serif", serif;
-}
-
-nav {
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 9;
-}
-div[data-tip="Source on GitHub"] {
-  margin-left: auto;
-  margin-right: 0;
 }
 </style>
