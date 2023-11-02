@@ -11,14 +11,14 @@ onMounted(() => {
     .querySelector("html")!
     .attributes.getNamedItem("data-theme")!.nodeValue;
   theme.value = currentTheme!;
-  console.info(`Theme: ${currentTheme}`);
+  // console.info(`Theme: ${currentTheme}`);
 });
 
 function onThemeToggle() {
   const previousTheme = document
     .querySelector("html")!
     .attributes.getNamedItem("data-theme")!.nodeValue;
-  console.info(`Changing theme from: ${previousTheme}`);
+  // console.info(`Changing theme from: ${previousTheme}`);
 
   theme.value = previousTheme == "dark" ? "light" : "dark";
 }
