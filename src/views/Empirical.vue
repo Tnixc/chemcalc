@@ -20,12 +20,11 @@ export default {
   },
   data() {
     return {
-      inputData: { element: "", percentage: ""},
+      inputData: [{ element: "", percentage: ""}],
     };
   },
   methods: {
-    handleCalculate(data: { element: string; percentage: string }) {
-      // console.log("Data from child component:", data);
+    handleCalculate(data: [{ element: string; percentage: string }]) {
       this.inputData = data;
     },
   },

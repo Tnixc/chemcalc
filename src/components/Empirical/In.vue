@@ -5,20 +5,21 @@ import MassIn from "../Empirical/MassIn.vue";
   <main class="p-4 flex flex-wrap">
     <div class="min-w-fit">
       <code
-        class="block bg-amber-500/20 ring-2 ring-amber-400 mb-4 p-4 rounded-xl"
+        class="block bg-amber-500/20 ring-2 ring-amber-400 mb-4 p-4 rounded-xl shadow-lg"
       >
         Error rate: ±0.05
       </code>
       <MassIn @m="x" />
-      <ul class="flex flex-col gap-1">
+      <ul class="flex flex-col gap-1" >
         <li class="flex flex-wrap">
-          <p class="w-1/2 px-3">Element</p>
-          <p class="w-1/2 px-3">Percentage Mass</p>
+          <p class="w-1/2 px-4">Element Symbol</p>
+          <p class="w-1/2 px-4">Percentage Mass</p>
         </li>
-        <li v-for="(row, index) in data" :key="index" class="int">
-          <input
+        <li v-for="(row, index) in data" :key="index" >
+          <div v-if="!row.molarMass || row.element !== '' " class="int" >
+            <input
             type="text"
-            placeholder="Element"
+            placeholder="Element Symbol"
             class="input input-bordered w-min max-w-xs"
             v-model="row.element"
             @keyup.enter="addRow"
@@ -30,6 +31,7 @@ import MassIn from "../Empirical/MassIn.vue";
             v-model="row.percentage"
             @keyup.enter="addRow"
           />
+          </div>
         </li>
       </ul>
       <div class="flex gap-3">
@@ -52,7 +54,7 @@ import MassIn from "../Empirical/MassIn.vue";
         </button>
         <button
           @click="removeRow"
-          class="btn bg-base-200/50 hover:bg-red-400/40 mt-2 ring-2 ring-accent aspect-square"
+          class="btn btn-ghost bg-base-200/50 hover:bg-red-400/40 mt-2 ring-2 ring-accent aspect-square"
         >
           <svg
             class="scale-150"
@@ -68,7 +70,7 @@ import MassIn from "../Empirical/MassIn.vue";
           </svg>
         </button>
       </div>
-      <button @click="send" class="btn btn-accent mt-2 w-full">
+      <button @click="send" class="btn btn-accent mt-2 w-full ring-2 ring-accent/40 shadow-lg">
         Calculate
       </button>
     </div>
@@ -83,7 +85,7 @@ export default {
   data() {
     return {
       data: [
-        { element: "", percentage: "" }, // Initial row
+        { element: "", percentage: "" },{molarMass: ""} // Initial row
       ],
     };
   },
@@ -99,8 +101,8 @@ export default {
     send() {
       this.$emit("calculate", this.data);
     },
-    x(data: string) {
-      Object.assign(this.data, { molarMass: data });
+    x(m: string) {
+      this.data[0] = ({molarMass: m})
     },
   },
 };
