@@ -6,7 +6,7 @@ import In from "../components/Empirical/In.vue";
 <template>
   <main>
     <Nav />
-    <In @calculate="handleCalculate" />
+    <In @calculate="handleCalculate"/>
   </main>
 </template>
 
@@ -18,7 +18,7 @@ export default {
   methods: {
     handleCalculate(data: { element: string; percentage: string }) {
       console.log("Data from child component:", data);
-    }
+    },
   }
 };
 </script>
