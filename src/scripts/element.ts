@@ -25,7 +25,7 @@ export function removeNumbers(input: string) {
 // function removeLowercaseStrings(arr: (string | number)[]): (string| number)[] {
 //   return arr.filter(item => typeof item !== 'number' && item !== (item as string).toLowerCase());
 // }
-function filter(arr: (string | number)[]): (string | number)[] {
+function rmNumbers(arr: (string | number)[]): (string | number)[] {
   const result: (string | number)[] = [];
   let consecutiveNumbers = 0;
 
@@ -53,7 +53,11 @@ function filterArrayIntersection(
   for (const item of arr1) {
     if (typeof item === "string" && arr2.includes(item)) {
       result.push(item);
-    } else if (typeof item === "number") {
+    }
+    if (item === "(" || item === ")") {
+      result.push(item);
+    }
+    if (typeof item === "number") {
       result.push(item);
     }
   }
@@ -63,7 +67,6 @@ export function tokenize(inputStr: string): string[] {
   const regex = /[A-Z][a-z]*\d*|\d+|\(|\)/g;
   const tokens = inputStr.match(regex) || [];
   const splitTokens: string[] = [];
-
   for (const token of tokens) {
     const elements = token.match(/[A-Z][a-z]*|\d+|\(|\)/g) || [];
     splitTokens.push(...elements);
@@ -71,7 +74,6 @@ export function tokenize(inputStr: string): string[] {
 
   return splitTokens;
 }
-
 export function convertStringsToInt(arr: string[]): (string | number)[] {
   const result: (string | number)[] = [];
   for (const item of arr) {
@@ -88,7 +90,7 @@ export function evaluateElementCounts(x: (string | number)[]): {
   [key: string]: number;
 } {
   const elementCounts: { [key: string]: number } = {};
-  let tokens = filter(filterArrayIntersection(x, validElementSymbols));
+  let tokens = rmNumbers(filterArrayIntersection(x, validElementSymbols));
   // let tokens = filter(y);
   const stack: number[] = [1];
   if (typeof tokens[0] === "number") {

@@ -40,10 +40,10 @@ function onThemeToggle() {
 
       <router-link
         class="btn shadow-md"
-        :class="{ active: $route.path === '/emperical' }"
-        to="/emperical"
+        :class="{ active: $route.path === '/empirical' }"
+        to="/empirical"
       >
-        Emperical
+        Empirical
       </router-link>
 
       <router-link
