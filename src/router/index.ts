@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Molecular from "../views/Molecular.vue";
-import Emperical from "../views/Emperical.vue";
+import Empirical from "../views/Empirical.vue";
 import Balance from "../views/Balance.vue";
 
 const router = createRouter({
@@ -18,9 +18,9 @@ const router = createRouter({
       component: Molecular,
     },
     {
-      path: "/emperical",
-      name: "emperical",
-      component: Emperical,
+      path: "/empirical",
+      name: "empirical",
+      component: Empirical,
     },
     {
       path: "/balance",
