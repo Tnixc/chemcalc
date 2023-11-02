@@ -100,7 +100,7 @@ export default {
       this.$emit("calculate", this.data);
     },
     x(data: string) {
-      Object.assign( this.data,{ molarMass: data });
+      Object.assign(this.data, { molarMass: data });
     },
   },
 };

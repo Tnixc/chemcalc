@@ -7,7 +7,7 @@
     type="text"
     placeholder="Molar Mass (g/mol)"
     v-model="molarMass"
-    @keyup.enter="emitData"
+    @keyup="emitData"
   />
 </template>
 <script lang="ts">
