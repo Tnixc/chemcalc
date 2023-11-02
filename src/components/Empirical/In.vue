@@ -85,7 +85,6 @@ export default {
       data: [
         { element: "", percentage: "" }, // Initial row
       ],
-      // x: "",
     };
   },
   methods: {
@@ -100,9 +99,8 @@ export default {
     send() {
       this.$emit("calculate", this.data);
     },
-    x(data: any) {
-      // this.enter = data;
-      console.log(data);
+    x(data: string) {
+      Object.assign( this.data,{ molarMass: data });
     },
   },
 };
