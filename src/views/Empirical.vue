@@ -20,11 +20,11 @@ export default {
   },
   data() {
     return {
-      inputData: [{ element: "", percentage: ""}],
+      inputData: [{ molarMass: "", element: "", percentage: ""}],
     };
   },
   methods: {
-    handleCalculate(data: [{ element: string; percentage: string }]) {
+    handleCalculate(data: [{ molarMass: string, element: string; percentage: string }]) {
       this.inputData = data;
     },
   },
