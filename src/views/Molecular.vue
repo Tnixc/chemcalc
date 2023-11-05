@@ -11,7 +11,7 @@ import ElementMakeup from "../components/Molecular/ElementMakeup.vue";
 <template>
   <main>
     <Nav />
-    <div class="p-8 flex gap-8 flex-wrap">
+    <div class="p-0 flex gap-8 flex-wrap md:p-8">
       <div class="flex-grow min-30">
         <MolecularInput @input-enter="updateRenderComponent" />
         <Render :inputData="renderInputData" />
