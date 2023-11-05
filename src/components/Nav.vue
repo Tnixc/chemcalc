@@ -121,7 +121,7 @@ function onThemeToggle() {
     </div>
     <div class="md:hidden mr-0 ml-auto">
       <details class="dropdown dropdown-end">
-        <summary class="btn mr-auto text-accent hover:ring-2 ring-accent" @click="something">{{ text }}</summary>
+        <summary class="shadow-xl btn mr-auto text-accent hover:ring-2 ring-accent" @click="something">{{ text }}</summary>
         <ul
           class="dropdown-content z-[1] menu p-2 shadow-xl bg-base-100/50 backdrop-blur-md rounded-box w-52 gap-2 mt-2"
         >
