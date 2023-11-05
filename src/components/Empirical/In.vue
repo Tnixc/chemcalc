@@ -10,27 +10,27 @@ import MassIn from "../Empirical/MassIn.vue";
         Error rate: ±0.05
       </code>
       <MassIn @m="x" />
-      <ul class="flex flex-col gap-1" >
+      <ul class="flex flex-col gap-1">
         <li class="flex flex-wrap">
           <p class="w-1/2 px-4">Element Symbol</p>
           <p class="w-1/2 px-4">Percentage Mass</p>
         </li>
-        <li v-for="(row, index) in data" :key="index" >
-          <div v-if="!row.molarMass || row.element !== '' " class="int" >
+        <li v-for="(row, index) in data" :key="index">
+          <div class="int">
             <input
-            type="text"
-            placeholder="Element Symbol"
-            class="input input-bordered w-min max-w-xs"
-            v-model="row.element"
-            @keyup.enter="addRow"
-          />
-          <input
-            type="text"
-            placeholder="Percentage Mass"
-            class="input input-bordered w-min max-w-xs"
-            v-model="row.percentage"
-            @keyup.enter="addRow"
-          />
+              type="text"
+              placeholder="Element Symbol"
+              class="input input-bordered w-min max-w-xs"
+              v-model="row.element"
+              @keyup.enter="addRow"
+            />
+            <input
+              type="text"
+              placeholder="Percentage Mass"
+              class="input input-bordered w-min max-w-xs"
+              v-model="row.percentage"
+              @keyup.enter="addRow"
+            />
           </div>
         </li>
       </ul>
@@ -70,7 +70,10 @@ import MassIn from "../Empirical/MassIn.vue";
           </svg>
         </button>
       </div>
-      <button @click="send" class="btn btn-accent mt-2 w-full ring-2 ring-accent/40 shadow-lg">
+      <button
+        @click="send"
+        class="btn btn-accent mt-2 w-full ring-2 ring-accent/40 shadow-lg"
+      >
         Calculate
       </button>
     </div>
@@ -85,13 +88,13 @@ export default {
   data() {
     return {
       data: [
-        { element: "", percentage: "" },{molarMass: ""} // Initial row
+        { molarMass: "", element: "", percentage: "" }, // Initial row
       ],
     };
   },
   methods: {
     addRow() {
-      this.data.push({ element: "", percentage: "" });
+      this.data.push({ molarMass: "", element: "", percentage: "" });
     },
     removeRow() {
       if (this.data.length > 1) {
@@ -102,7 +105,7 @@ export default {
       this.$emit("calculate", this.data);
     },
     x(m: string) {
-      this.data[0] = ({molarMass: m})
+      this.data[0].molarMass = m;
     },
   },
 };
