@@ -19,6 +19,21 @@ body {
 * {
   box-sizing: border-box;
 }
+@keyframes slideIn {
+  0% {
+    transform: translateY(-300%) translateX(-50%);
+  }
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+}
+.error {
+  @apply bg-red-300/50 ring-2 ring-red-400 fixed top-5 left-1/2 -translate-x-1/2 z-10 p-4 rounded-xl shadow-xl transition-all duration-300 backdrop-blur-lg text-red-900;
+  animation: slideIn 0.5s ease-in-out;
+}
+.fadeOut {
+  @apply -translate-x-1/2 -translate-y-40 opacity-0;
+}
 #bg {
   position: fixed;
   width: 100%;

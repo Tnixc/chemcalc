@@ -11,6 +11,7 @@
 
 # Todo
 
+- [ ] Error messages on invalid input. (Add to the filter and ArrayIntersection functions?)
 - [ ] Emperical formulae part
 - [ ] Balancing formulae
 - [x] Fix spelling(I literally do not care)

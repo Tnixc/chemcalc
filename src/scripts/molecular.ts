@@ -1,5 +1,23 @@
 import fetch from "sync-fetch";
 
+export function error(message: string) {
+  // Create a div element for the error notification
+  const notification = document.createElement("div");
+  notification.className = "error";
+  notification.textContent = message;
+
+  // Append the notification to the body
+  document.body.appendChild(notification);
+
+  // Automatically remove the notification after 3 seconds
+  setTimeout(() => {
+    notification.classList.add("fadeOut");
+    setTimeout(() => {
+      notification.remove();
+    }, 1000); // 1 second for the fade-out animation
+  }, 4000); // 3 seconds for the notification to stay visible
+}
+
 export function getElementData() {
   const response = fetch(
     "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json"
@@ -22,9 +40,7 @@ export function removeNumbers(input: string) {
   );
   return atomicSymbolsWithoutNumbers;
 }
-// function removeLowercaseStrings(arr: (string | number)[]): (string| number)[] {
-//   return arr.filter(item => typeof item !== 'number' && item !== (item as string).toLowerCase());
-// }
+
 function rmNumbers(arr: (string | number)[]): (string | number)[] {
   const result: (string | number)[] = [];
   let consecutiveNumbers = 0;
@@ -60,6 +76,14 @@ function filterArrayIntersection(
     if (typeof item === "number") {
       result.push(item);
     }
+    if (
+      typeof item === "string" &&
+      item !== "(" &&
+      item !== ")" &&
+      !arr2.includes(item)
+    ) {
+      error(`Invalid element symbol: ${item}. It has been removed.`);
+    }
   }
   return result;
 }
@@ -68,6 +92,14 @@ export function tokenize(inputStr: string): string[] {
   const tokens = inputStr.match(regex) || [];
   const splitTokens: string[] = [];
   for (const token of tokens) {
+    if (
+      typeof token === "string" &&
+      token !== "(" &&
+      token !== ")" &&
+      token.match(/^[a-z]/)
+    ) {
+      error("Invalid formula or element symbol");
+    }
     const elements = token.match(/[A-Z][a-z]*|\d+|\(|\)/g) || [];
     splitTokens.push(...elements);
   }
@@ -91,9 +123,9 @@ export function evaluateElementCounts(x: (string | number)[]): {
 } {
   const elementCounts: { [key: string]: number } = {};
   let tokens = rmNumbers(filterArrayIntersection(x, validElementSymbols));
-  // let tokens = filter(y);
   const stack: number[] = [1];
   if (typeof tokens[0] === "number") {
+    error("Invalid formula or element symbol");
     return elementCounts;
   }
   let i = 0;
@@ -141,6 +173,7 @@ export function evaluateElementCounts(x: (string | number)[]): {
       }
     }
   }
+
   return elementCounts;
 }
 export function getElementNameFromSymbol(
