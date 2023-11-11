@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import In from "@/components/Empirical/In.vue";
-import Out from "@/components/Empirical/Out.vue";
-import Nav from "@/components/Nav.vue";
-</script>
 <template>
   <Nav />
   <div
@@ -18,10 +13,15 @@ import Nav from "@/components/Nav.vue";
     <In :items="myArray" @calculate="handleCalculate"></In>
   </div>
   <div>
-    <Out :v="result"></Out></div>
+    <Out :v="result"></Out>
+  </div>
 </template>
-
 <script lang="ts">
+import In from "@/components/Empirical/In.vue";
+import Out from "@/components/Empirical/Out.vue";
+import Nav from "@/components/Nav.vue";
+
+import { removeItemsWithoutColon, turnIntoObjectByColon } from "@/scripts/empirical";
 export default {
   components: {
     In,
@@ -37,6 +37,10 @@ export default {
   methods: {
     handleCalculate(calculatedArray: Array<string>) {
       console.log("Calculated Array:", calculatedArray);
+      let filteredArray = removeItemsWithoutColon(calculatedArray);
+      console.log("Filtered Array:", filteredArray);
+      let obj = turnIntoObjectByColon(filteredArray);
+      console.log("Object:", obj);
       this.result = calculatedArray.join(" ");
     },
   },
