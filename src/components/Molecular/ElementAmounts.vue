@@ -14,7 +14,7 @@
       >
         <span class="w-full block text-right px-1">{{ symbol }}</span>
         <span class="px-1 flex-grow">{{ symbolData[0] }}</span>
-        <span class="pr-10">{{ symbolData[2] }}</span>
+        <span class="pr-10 max-w-5ch">{{ symbolData[2] }}</span>
         <span class="px-1 text-neutral-content w-10 text-right">{{
           symbolData[1]
         }}</span>
@@ -60,6 +60,16 @@ li > span {
 li > span:nth-child(1) {
   width: calc(2ch + 1rem);
   opacity: 1;
+}
+.max-w-5ch {
+  max-width: 5ch;
+  overflow: hidden;
+}
+@media only screen and (min-width: 600px) {
+  .max-w-5ch {
+    max-width: none;
+    overflow: hidden;
+  }
 }
 </style>
 ../../scripts/molecular
