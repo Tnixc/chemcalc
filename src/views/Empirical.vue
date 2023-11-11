@@ -1,31 +1,30 @@
 <script setup lang="ts">
 import Nav from "../components/Nav.vue";
 import In from "../components/Empirical/In.vue";
-import Logic from "../components/Empirical/Logic.vue";
+import Out from "../components/Empirical/Out.vue";
 </script>
-
 <template>
-  <main>
+  <div>
     <Nav />
-    <In @calculate="handleCalculate" />
-    <Logic :inputData="inputData" />
-  </main>
+    <In :arr="arr" @add="addToArray"></In>
+    <Out :arr="arr"></Out>
+  </div>
 </template>
 
 <script lang="ts">
 export default {
   components: {
     In,
-    Logic,
+    Out,
   },
   data() {
     return {
-      inputData: [{ molarMass: "", element: "", percentage: ""}],
+      arr: [""],
     };
   },
   methods: {
-    handleCalculate(data: [{ molarMass: string, element: string; percentage: string }]) {
-      this.inputData = data;
+    addToArray() {
+      this.arr.push("");
     },
   },
 };
