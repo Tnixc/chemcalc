@@ -1,15 +1,20 @@
 <template>
   <div
-    class="my-4 bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral shadow-lg flex flex-col gap-2 max-w-xs"
+    class="my-4 bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral shadow-lg max-w-xs flex flex-col gap-2"
   >
-    <div v-for="(value, index) in items" :key="index" class="flex gap-2">
+    <div
+      v-for="(value, index) in items"
+      :key="index"
+      v-bind:class="{ removed: removedIndices.includes(index) }"
+      class="flex gap-2 transition-all flex-1"
+    >
       <input
         type="text"
         v-model="items![index]"
         class="input w-full"
         placeholder="Element: Percentage"
       />
-      <button class="btn hover:btn-error p-0" @click="removeIndex(index)">
+      <button class="btn hover:btn-error p-0 shadow-sm" @click="removeIndex(index)">
         <svg
           class="fill-[currentColor]"
           xmlns="http://www.w3.org/2000/svg"
@@ -34,16 +39,25 @@
 </template>
 
 <script lang="ts">
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export default {
   props: {
     items: Array,
+  },
+  data() {
+    return {
+      removedIndices: [] as number[],
+    };
   },
   methods: {
     addItem() {
       this.items!.push("");
     },
-    removeIndex(index: number) {
+    async removeIndex(index: number) {
+      this.removedIndices.push(index);
+      await sleep(140);
       this.items!.splice(index, 1);
+      this.removedIndices = this.removedIndices.filter((i) => i !== index);
     },
     calculate() {
       this.$emit("calculate", this.items);
@@ -51,3 +65,11 @@ export default {
   },
 };
 </script>
+<style>
+.removed {
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+  transition: all 140ms ease-in-out;
+}
+</style>
