@@ -17,21 +17,27 @@ import Nav from "@/components/Nav.vue";
   <div>
     <In :items="myArray" @calculate="handleCalculate"></In>
   </div>
+  <div>
+    <Out :v="result"></Out></div>
 </template>
 
 <script lang="ts">
 export default {
   components: {
     In,
+    Out,
+    Nav,
   },
   data() {
     return {
       myArray: ["", "", ""],
+      result: "",
     };
   },
   methods: {
     handleCalculate(calculatedArray: Array<string>) {
       console.log("Calculated Array:", calculatedArray);
+      this.result = calculatedArray.join(" ");
     },
   },
 };

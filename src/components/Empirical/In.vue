@@ -29,12 +29,12 @@
         </svg>
       </button>
     </div>
-    <button class="btn" @click="addItem">Add</button>
+    <button class="btn shadow-md" @click="addItem">Add</button>
   </div>
   <div
     class="my-4 bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral shadow-lg flex flex-col gap-2 max-w-xs"
   >
-    <button class="btn btn-accent" @click="calculate">Calculate</button>
+    <button class="btn btn-accent shadow-md" @click="calculate">Calculate</button>
   </div>
 </template>
 
@@ -49,6 +49,7 @@ export default {
       removedIndices: [] as number[],
     };
   },
+  emits: ["calculate"],
   methods: {
     addItem() {
       this.items!.push("");
