@@ -21,10 +21,10 @@ export default {
   },
   computed: {
     total() {
-      let input: string = this.inputData!;
-      let counts = evaluateElementCounts(convertStringsToInt(tokenize(input)));
-      let namesAndcounts = getElementNameFromSymbol(counts, elementDataObject);
-      let total = getTotalMolarMass(namesAndcounts);
+      var input: string = this.inputData!;
+      var counts = evaluateElementCounts(convertStringsToInt(tokenize(input)));
+      var namesAndcounts = getElementNameFromSymbol(counts, elementDataObject);
+      var total = getTotalMolarMass(namesAndcounts);
       return total;
     },
   },

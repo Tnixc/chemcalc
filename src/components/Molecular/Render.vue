@@ -17,12 +17,12 @@ export default {
   },
   computed: {
     chemicalizeString() {
-      let input = this.inputData;
+      var input = this.inputData;
       // Check if the input string is empty
       if (!input) {
         input = "wow such empty";
       }
-      let x = input
+      var x = input
         .split(/(\d+)/)
         .map((s, i) => (i % 2 ? `<sub>${s}</sub>` : s))
         .join("");
