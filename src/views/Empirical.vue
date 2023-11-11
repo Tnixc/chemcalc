@@ -1,13 +1,21 @@
 <script setup lang="ts">
-import Nav from "../components/Nav.vue";
-import In from "../components/Empirical/In.vue";
-import Out from "../components/Empirical/Out.vue";
+import In from "@/components/Empirical/In.vue";
+import Out from "@/components/Empirical/Out.vue";
+import Nav from "@/components/Nav.vue";
 </script>
 <template>
+  <Nav />
+  <div
+    class="my-4 bg-amber-500/10 p-4 rounded-xl ring-2 ring-amber-400 shadow-lg"
+  >
+    <h1 class="text-lg">
+      Enter an element and it's percentage mass in the following format:
+    </h1>
+    <code class="text-lg font-bold">Element: percent</code>
+    <p>Error: ±0.05</p>
+  </div>
   <div>
-    <Nav />
-    <In :arr="arr" @add="addToArray"></In>
-    <Out :arr="arr"></Out>
+    <In :items="myArray" @calculate="handleCalculate"></In>
   </div>
 </template>
 
@@ -15,16 +23,15 @@ import Out from "../components/Empirical/Out.vue";
 export default {
   components: {
     In,
-    Out,
   },
   data() {
     return {
-      arr: [""],
+      myArray: ["", "", ""],
     };
   },
   methods: {
-    addToArray() {
-      this.arr.push("");
+    handleCalculate(calculatedArray: Array<string>) {
+      console.log("Calculated Array:", calculatedArray);
     },
   },
 };
