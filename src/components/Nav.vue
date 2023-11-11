@@ -236,8 +236,8 @@ export default {
   },
   methods: {
     something() {
-      let prev = "▼";
-      let next = "▲";
+      const prev = "▼";
+      const next = "▲";
       this.text = this.text == prev ? next : prev;
     },
   },
