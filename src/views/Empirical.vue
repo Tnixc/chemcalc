@@ -21,7 +21,12 @@ import In from "@/components/Empirical/In.vue";
 import Out from "@/components/Empirical/Out.vue";
 import Nav from "@/components/Nav.vue";
 
-import { removeItemsWithoutColon, turnIntoObjectByColon, removeJunkFromObjectValue } from "@/scripts/empirical";
+import {
+  removeItemsWithoutColon,
+  turnIntoObjectByColon,
+  removeJunkFromObjectKey,
+  removeJunkFromObjectValue,
+} from "@/scripts/empirical";
 export default {
   components: {
     In,
@@ -37,7 +42,8 @@ export default {
   methods: {
     handleCalculate(calculatedArray: Array<string>) {
       var filteredArray = removeItemsWithoutColon(calculatedArray);
-      var obj = removeJunkFromObjectValue(turnIntoObjectByColon(filteredArray));
+      var obj = removeJunkFromObjectValue(removeJunkFromObjectKey(turnIntoObjectByColon(filteredArray)));
+      console.log(obj);
       this.result = calculatedArray.join(" ");
     },
   },
