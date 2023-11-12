@@ -50,7 +50,17 @@ export function removeJunkFromObjectValue(obj: any): object {
 export function turnValueIntoMoles(obj: any): object{
   const newObj: any = {};
   for (const key in obj) {
-    newObj[key] = getMolarMass(key.toString()) * obj[key];
+    newObj[key] = obj[key]/getMolarMass(key.toString()) ;
   }
   return newObj;
 } 
+export function findRatio(obj: object): object{
+  const newObj: any = {};
+  const values = Object.values(obj);
+  const min = Math.min(...values);
+  for (const key in obj) {
+    newObj[key] = Math.round(obj[key as keyof typeof obj]/min * 100) / 100;
+  }
+  return newObj;
+
+}

@@ -14,9 +14,9 @@
         class="input w-full"
         placeholder="Element: Percentage"
       />
-      <button class="btn hover:btn-error p-0 shadow-sm" @click="removeIndex(index)">
+      <button class="btn aspect-square hover:btn-error p-0 shadow-sm" @click="removeIndex(index)">
         <svg
-          class="fill-[currentColor]"
+          class="fill-[currentColor] scale-75"
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
