@@ -7,7 +7,6 @@
       Enter an element and it's percentage mass in the following format:
     </h1>
     <code class="text-lg font-bold">Element: percent</code>
-    <p>Error: ±0.05</p>
     <p>* Blanks, duplicated or invalid elements will be removed.</p>
     <p>* Do not put spaces in the element before the colon</p>
   </div>
@@ -30,6 +29,7 @@ import {
   removeJunkFromObjectKey,
   removeJunkFromObjectValue,
   turnValueIntoMoles,
+  findRatio,
 } from "@/scripts/empirical";
 export default {
   components: {
@@ -50,7 +50,10 @@ export default {
       console.log(obj);
       var molarObject = turnValueIntoMoles(obj);
       console.log(molarObject);
-      this.result = calculatedArray.join(" ");
+      var ratio = findRatio(molarObject);
+      console.log(ratio);
+      var stringify = JSON.stringify(ratio);
+      this.result = stringify;
     },
   },
 };
