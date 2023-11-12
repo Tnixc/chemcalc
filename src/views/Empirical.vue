@@ -8,6 +8,8 @@
     </h1>
     <code class="text-lg font-bold">Element: percent</code>
     <p>Error: ±0.05</p>
+    <p>* Blanks, duplicated or invalid elements will be removed.</p>
+    <p>* Do not put spaces in the element before the colon</p>
   </div>
   <div>
     <In :items="myArray" @calculate="handleCalculate"></In>
@@ -15,6 +17,7 @@
   <div>
     <Out :v="result"></Out>
   </div>
+
 </template>
 <script lang="ts">
 import In from "@/components/Empirical/In.vue";
@@ -26,6 +29,7 @@ import {
   turnIntoObjectByColon,
   removeJunkFromObjectKey,
   removeJunkFromObjectValue,
+  turnValueIntoMoles,
 } from "@/scripts/empirical";
 export default {
   components: {
@@ -44,6 +48,8 @@ export default {
       var filteredArray = removeItemsWithoutColon(calculatedArray);
       var obj = removeJunkFromObjectValue(removeJunkFromObjectKey(turnIntoObjectByColon(filteredArray)));
       console.log(obj);
+      var molarObject = turnValueIntoMoles(obj);
+      console.log(molarObject);
       this.result = calculatedArray.join(" ");
     },
   },
