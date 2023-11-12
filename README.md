@@ -11,8 +11,9 @@
 
 # Todo
 
-- [ ] Error messages on invalid input. (Add to the filter and ArrayIntersection functions?)
-- [ ] Emperical formulae part
+- [] ~~Error messages on invalid input. (Add to the filter and ArrayIntersection functions?)~~
+- [x] Empirical formulae part
+- [ ] Empirical calculation but in the other direction.
 - [ ] Balancing formulae
 - [x] Fix spelling(I literally do not care)
 - [x] Fix infinite looping when something like `N3fe999999` is entered
