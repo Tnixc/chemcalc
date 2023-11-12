@@ -1,14 +1,20 @@
 <template>
-  <div>
-    <p>Values in Another Component:</p>
-    <p>{{ v }}</p>
+  <div
+    class="my-4 bg-base-200/50 p-4 rounded-xl ring-2 ring-neutral shadow-lg flex flex-col gap-2 max-w-xs"
+  >
+    <p>Result:</p>
+    <div class="flex flex-col">
+      <div v-for="(value, index) in v" :key="index">
+        <p class="text-2xl">{{ index }}: {{ value }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 export default {
   props: {
-    v: String,
+    v: Object,
   },
 };
 </script>

@@ -10,11 +10,9 @@
     <p>* Blanks, duplicated or invalid elements will be removed.</p>
     <p>* Do not put spaces in the element before the colon</p>
   </div>
-  <div>
-    <In :items="myArray" @calculate="handleCalculate"></In>
-  </div>
-  <div>
-    <Out :v="result"></Out>
+  <div class="flex flex-wrap max-w-2xl gap-4">
+    <In  class="" :items="myArray" @calculate="handleCalculate" />
+    <Out class="flex-grow"  :v="result"></Out>
   </div>
 
 </template>
@@ -40,7 +38,7 @@ export default {
   data() {
     return {
       myArray: ["", "", ""],
-      result: "",
+      result: {},
     };
   },
   methods: {
@@ -52,8 +50,7 @@ export default {
       console.log(molarObject);
       var ratio = findRatio(molarObject);
       console.log(ratio);
-      var stringify = JSON.stringify(ratio);
-      this.result = stringify;
+      this.result = ratio;
     },
   },
 };
