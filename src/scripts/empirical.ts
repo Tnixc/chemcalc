@@ -1,5 +1,23 @@
-import {validElementSymbols} from "./molecular";
+import {validElementSymbols, elementDataObject} from "./molecular";
 
+function searchElement(elements: any[], symbol: string) {
+  for (const element of elements) {
+    if (element.symbol === symbol) {
+      return {
+        atomicMass: element.atomic_mass,
+      };
+    }
+  }
+  return null;
+}
+export function getMolarMass(symbol: string): number {
+  const validElementsObject = searchElement(elementDataObject.elements, symbol);
+  if (validElementsObject) {
+    const { atomicMass } = validElementsObject;
+    return atomicMass;
+  }
+  return 0;
+}
 export function removeItemsWithoutColon(items: string[]): string[] {
   return items.filter((item) => item.includes(":"));
 }
@@ -20,12 +38,19 @@ export function removeJunkFromObjectKey(obj: object): object {
   }
   return newObj;
 }
-export function removeJunkFromObjectValue(obj: any): any {
+export function removeJunkFromObjectValue(obj: any): object {
   const newObj: any = {};
   for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      newObj[key] = obj[key].replace(/[^0-9.]/g, '');
+    if (obj[key] !== "") {
+    newObj[key] = parseFloat(obj[key].replace(/[^0-9.]/g, ''));
     }
   }
   return newObj;
 }
+export function turnValueIntoMoles(obj: any): object{
+  const newObj: any = {};
+  for (const key in obj) {
+    newObj[key] = getMolarMass(key.toString()) * obj[key];
+  }
+  return newObj;
+} 
