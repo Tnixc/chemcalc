@@ -4,8 +4,8 @@
   >
     <p>Result:</p>
     <div class="flex flex-col">
-      <div v-for="(value, index) in v" :key="index">
-        <p class="text-2xl">{{ index }}: {{ value }}</p>
+      <div v-for="(value, index) in v" :key="index" class="flex gap-2">
+        <p class="text-2xl text-right w-[2ch] opacity-60">{{ index }}</p><p class="text-2xl ">{{ value }}</p>
       </div>
     </div>
   </div>
@@ -18,3 +18,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+*{
+  font-family: "jetbrains mono", monospace;
+}
+</style>
