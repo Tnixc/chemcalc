@@ -12,8 +12,10 @@
   "dependencies": {
     "@types/sync-fetch": "^0.4.2",
     "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
     "sync-fetch": "^0.5.2",
     "tailwind": "latest",
+    "tailwindcss": "^3.3.5",
     "theme-change": "^2.5.0",
     "vite-plugin-checker": "^0.6.2",
     "vue": "^3.3.7",
