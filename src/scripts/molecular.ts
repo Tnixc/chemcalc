@@ -14,8 +14,8 @@ export function error(message: string) {
     notification.classList.add("fadeOut");
     setTimeout(() => {
       notification.remove();
-    }, 1000); // 1 second for the fade-out animation
-  }, 4000); // 3 seconds for the notification to stay visible
+    }, 1000);
+  }, 4000);
 }
 
 export function getElementData() {
